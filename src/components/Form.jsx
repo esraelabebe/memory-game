@@ -1,11 +1,7 @@
 import RegularButton from "./RegularButton";
 
 function Form() {
-  return (
-    <>
-      <RegularButton />
-    </>
-  );
+  return <RegularButton />;
 }
 
 export default Form;
