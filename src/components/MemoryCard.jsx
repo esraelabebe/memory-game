@@ -1,5 +1,3 @@
-import "./MemoryCard.css";
-
 function MemoryCard() {
   return (
     <>

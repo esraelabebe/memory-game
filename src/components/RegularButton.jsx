@@ -1,5 +1,3 @@
-import "./RegularButton";
-
 function RegularButton() {
   return (
     <>
