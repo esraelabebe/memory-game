@@ -1,7 +1,12 @@
 import RegularButton from "./RegularButton";
 
-function Form() {
-  return <RegularButton />;
+function Form({ handleSubmit }) {
+  return (
+    <>
+      <RegularButton />
+      <button onClick={handleSubmit}>Start Game</button>
+    </>
+  );
 }
 
 export default Form;
