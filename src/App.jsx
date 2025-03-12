@@ -1,13 +1,12 @@
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
-import { decodeEntity } from "html-entities";
 import { useState } from "react";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
 
-  async function startGame(e) {
+  const startGame = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
@@ -31,7 +30,7 @@ function App() {
     <main>
       <h1>Memory</h1>
       {!isGameOn && <Form handleSubmit={startGame} />}
-      <MemoryCard />
+      {isGameOn && <MemoryCard data={emojisData}/>}
     </main>
   );
 }
