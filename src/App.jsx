@@ -11,27 +11,33 @@ function App() {
     e.preventDefault();
     try {
       const response = await getEmojisData();
-      const dataSample = response.slice(0, 5);
-      console.log(getRandomIndices(response));
+      const dataSlice = getDataSlice(response);
 
-      setEmojisData(dataSample);
+      setEmojisData(dataSlice);
       setIsGameOn(true);
     } catch (err) {
       console.error(err);
     }
   }
 
-  function getRandomIndices(data) {
+  function getRandomIndices(response) {
     const randomIndicesArray = [];
       for (let i = 0; i < 5; i++) {
-        const randomNum = Math.floor(Math.random() * data.length)
+        const randomNum = Math.floor(Math.random() * response.length)
         if (!randomIndicesArray.includes(randomNum)) {
           randomIndicesArray.push(randomNum)
         }else {
           i--
-        } 
+        }
       }
       return randomIndicesArray;
+  }
+
+  function getDataSlice(response) {
+    const randomIndices = getRandomIndices(response);
+
+    const dataSlice = randomIndices.map(index => response[index]);
+    return dataSlice;
   }
 
   return (
