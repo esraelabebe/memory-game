@@ -6,11 +6,14 @@ import { useState } from "react";
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const startGame = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await getEmojisData();
+      setIsLoading(false);
       const dataSlice = getDataSlice(response);
 
       setEmojisData(dataSlice);
@@ -43,7 +46,7 @@ function App() {
   return (
     <main>
       <h1>Memory Game</h1>
-      {!isGameOn && <Form handleSubmit={startGame} />}
+      {!isGameOn && <Form handleSubmit={startGame} loading={isLoading }/>}
       {isGameOn && <MemoryCard data={emojisData}/>}
     </main>
   );
