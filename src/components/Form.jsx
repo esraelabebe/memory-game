@@ -1,9 +1,9 @@
 import RegularButton from "./RegularButton";
 
-function Form({ handleSubmit }) {
+function Form({ handleSubmit, loading }) {
   return (
     <form>
-      <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
+      {loading ? <p>Loading...</p> :<RegularButton handleClick={handleSubmit}>Start Game</RegularButton>}
     </form>
   );
 }
