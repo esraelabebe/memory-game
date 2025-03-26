@@ -7,6 +7,10 @@ function App() {
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  //selectedCards track which card is selected by the user
+  const [selectedCards, setSelectedCards] = useState([]);
+
+  console.log(selectedCards);
 
   const startGame = async (e) => {
     e.preventDefault();
@@ -66,11 +70,25 @@ function App() {
     return pairedEmojisArray;
   }
 
+  /**
+   *what should happen when a card is clicked.
+   */
+  function turnCard(emojiElement, index) {
+    //Check if the clicked card is already in the setSelectedCards array. selectedCardEntry will return emoji object or undefined.
+    const selectedCardEntry = selectedCards.find((emoji) => emoji.index === index);
+    //if the user clicked the same card twice do nothing if not assign the value in state
+    if(!selectedCardEntry && selectedCards.length < 2) {
+      setSelectedCards(prevSelectedCards => [...prevSelectedCards, {emojiElement, index}]);
+    }else{
+      setSelectedCards([{emojiElement, index}]);
+    }
+}
+
   return (
     <main>
       <h1>Memory Game</h1>
       {!isGameOn && <Form handleSubmit={startGame} loading={isLoading} />}
-      {isGameOn && <MemoryCard data={emojisData}/>}
+      {isGameOn && <MemoryCard data={emojisData} handleClick={turnCard}/>}
     </main>
   );
 }
