@@ -7,7 +7,9 @@ function MemoryCard({ handleClick, data }) {
     <ul className="card-container">
       {data.map((emojiElement, index) => (
         <li key={index}>
-          <button onClick={handleClick}>{emojiElement.emoji}</button>
+          <button onClick={() => handleClick(emojiElement.emoji, index)}>
+            {emojiElement.emoji}
+            </button>
         </li>
       ))}
     </ul>
