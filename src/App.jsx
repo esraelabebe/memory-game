@@ -1,7 +1,7 @@
 import { getEmojisData } from "./components/api";
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -9,8 +9,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   //selectedCards track which card is selected by the user
   const [selectedCards, setSelectedCards] = useState([]);
+  const [matchedCards, setMatchedCards] = useState([]);
 
-  console.log(selectedCards);
+  console.log(matchedCards);
+
+  useEffect(() => {
+    if(selectedCards.length === 2 && selectedCards[0].emojiElement === selectedCards[1].emojiElement) {
+      setMatchedCards((prevMatchedCards) => [...prevMatchedCards, ...selectedCards]);
+    }
+  }, [selectedCards])
 
   const startGame = async (e) => {
     e.preventDefault();
