@@ -84,7 +84,6 @@ function App() {
     const selectedCardEntry = selectedCards.find((emoji) => emoji.index === index);
     //if the user clicked the same card twice do nothing if not assign the value in state
     if(!selectedCardEntry && selectedCards.length < 2) {
-      // setSelectedCards(prevSelectedCards => [...prevSelectedCards, {emojiElement, index}]);
       const newSelectedCards = [...selectedCards, {emojiElement, index}];
       setSelectedCards(newSelectedCards);
       addMatchedCards(newSelectedCards);
