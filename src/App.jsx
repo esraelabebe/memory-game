@@ -9,8 +9,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   //selectedCards track which card is selected by the user
   const [selectedCards, setSelectedCards] = useState([]);
+  const [matchedCards, setMatchedCards] = useState([]);
 
-  console.log(selectedCards);
+
+  const addMatchedCards = (selectedCardsList) => {
+    if(selectedCardsList.length === 2 && selectedCardsList[0].emojiElement === selectedCardsList[1].emojiElement) {
+        setMatchedCards((prevMatchedCards) => [...prevMatchedCards, ...selectedCardsList]);
+      }
+  }
 
   const startGame = async (e) => {
     e.preventDefault();
@@ -78,7 +84,9 @@ function App() {
     const selectedCardEntry = selectedCards.find((emoji) => emoji.index === index);
     //if the user clicked the same card twice do nothing if not assign the value in state
     if(!selectedCardEntry && selectedCards.length < 2) {
-      setSelectedCards(prevSelectedCards => [...prevSelectedCards, {emojiElement, index}]);
+      const newSelectedCards = [...selectedCards, {emojiElement, index}];
+      setSelectedCards(newSelectedCards);
+      addMatchedCards(newSelectedCards);
     }else{
       setSelectedCards([{emojiElement, index}]);
     }
