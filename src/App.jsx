@@ -1,7 +1,7 @@
 import { getEmojisData } from "./components/api";
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -13,11 +13,11 @@ function App() {
   const [isGameOver, setIsGameOver] = useState(false);
 
   //Detect for matching cards and add them to "matchedCards" state variable.
-  useEffect(() => {
-    if(selectedCards.length === 2 && selectedCards[0].emojiElement === selectedCards[1].emojiElement) {
-      setMatchedCards((prevMatchedCards) => [...prevMatchedCards, ...selectedCards]);
-    }
-  }, [selectedCards])
+  const addMatchedCards = (selectedCardsList) => {
+    if(selectedCardsList.length === 2 && selectedCardsList[0].emojiElement === selectedCardsList[1].emojiElement) {
+        setMatchedCards((prevMatchedCards) => [...prevMatchedCards, ...selectedCardsList]);
+      }
+  }
 
   useEffect(() => {
     /**
@@ -96,7 +96,9 @@ function App() {
     const selectedCardEntry = selectedCards.find((emoji) => emoji.index === index);
     //if the user clicked the same card twice do nothing if not assign the value in state
     if(!selectedCardEntry && selectedCards.length < 2) {
-      setSelectedCards(prevSelectedCards => [...prevSelectedCards, {emojiElement, index}]);
+      const newSelectedCards = [...selectedCards, {emojiElement, index}];
+      setSelectedCards(newSelectedCards);
+      addMatchedCards(newSelectedCards);
     }else{
       setSelectedCards([{emojiElement, index}]);
     }
