@@ -15,8 +15,16 @@ function App() {
   //Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
     if(selectedCardsList.length === 2 && selectedCardsList[0].emojiElement === selectedCardsList[1].emojiElement) {
-        setMatchedCards((prevMatchedCards) => [...prevMatchedCards, ...selectedCardsList]);
+      const newMatchedCards = [...matchedCards, ...selectedCardsList];
+        setMatchedCards(newMatchedCards);
+        gameOver(emojisData, newMatchedCards);
       }
+  }
+  
+  const gameOver = (emojisDataArray, matchedCardsArray) => {
+    if(emojisDataArray.length && matchedCardsArray.length === emojisDataArray.length) {
+      setIsGameOver(true);
+    }
   }
 
   useEffect(() => {
