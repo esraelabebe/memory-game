@@ -1,3 +1,5 @@
+import EmojiButton from "./EmojiButton";
+
 function MemoryCard({ handleClick, data }) {
   if (!data || data?.length === 0) {
     return <p>Data not available at the moment. Please try again later.</p>;
@@ -7,9 +9,11 @@ function MemoryCard({ handleClick, data }) {
     <ul className="card-container">
       {data.map((emojiElement, index) => (
         <li key={index}>
-          <button onClick={() => handleClick(emojiElement.emoji, index)}>
-            {emojiElement.emoji}
-            </button>
+          <EmojiButton
+            content={emojiElement.emoji}
+            style="btn btn--emoji"
+            handleClick={() => handleClick(emojiElement.emoji, index)}
+          />
         </li>
       ))}
     </ul>
