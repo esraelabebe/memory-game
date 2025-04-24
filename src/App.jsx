@@ -1,7 +1,7 @@
 import { getEmojisData } from "./components/api";
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -10,12 +10,26 @@ function App() {
   //selectedCards track which card is selected by the user
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
+  const [isGameOver, setIsGameOver] = useState(false);
 
-
+  //Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
     if(selectedCardsList.length === 2 && selectedCardsList[0].emojiElement === selectedCardsList[1].emojiElement) {
-        setMatchedCards((prevMatchedCards) => [...prevMatchedCards, ...selectedCardsList]);
+      const newMatchedCards = [...matchedCards, ...selectedCardsList];
+        setMatchedCards(newMatchedCards);
+        gameOver(emojisData, newMatchedCards);
       }
+  }
+  
+  const gameOver = (emojisDataArray, matchedCardsArray) => {
+    /**
+     * To stop the if statement from evaluating to true when the app renders check if there is an emojisData and is being rendered
+     * as memory cards.
+     * Then compare the emojisData length to matchedCards length to determine there are no more cards left and the game is over.
+     */
+    if(emojisDataArray.length && matchedCardsArray.length === emojisDataArray.length) {
+      setIsGameOver(true);
+    }
   }
 
   const startGame = async (e) => {
