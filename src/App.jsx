@@ -22,21 +22,15 @@ function App() {
   }
   
   const gameOver = (emojisDataArray, matchedCardsArray) => {
-    if(emojisDataArray.length && matchedCardsArray.length === emojisDataArray.length) {
-      setIsGameOver(true);
-    }
-  }
-
-  useEffect(() => {
     /**
      * To stop the if statement from evaluating to true when the app renders check if there is an emojisData and is being rendered
      * as memory cards.
      * Then compare the emojisData length to matchedCards length to determine there are no more cards left and the game is over.
      */
-    if(emojisData.length && matchedCards.length === emojisData.length) {
-        setIsGameOver(true);
+    if(emojisDataArray.length && matchedCardsArray.length === emojisDataArray.length) {
+      setIsGameOver(true);
     }
-  }, [matchedCards])
+  }
 
   const startGame = async (e) => {
     e.preventDefault();
