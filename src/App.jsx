@@ -1,7 +1,7 @@
 import { getEmojisData } from "./components/api";
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -14,23 +14,29 @@ function App() {
 
   //Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
-    if(selectedCardsList.length === 2 && selectedCardsList[0].emojiElement === selectedCardsList[1].emojiElement) {
+    if (
+      selectedCardsList.length === 2 &&
+      selectedCardsList[0].emojiElement === selectedCardsList[1].emojiElement
+    ) {
       const newMatchedCards = [...matchedCards, ...selectedCardsList];
-        setMatchedCards(newMatchedCards);
-        gameOver(emojisData, newMatchedCards);
-      }
-  }
-  
+      setMatchedCards(newMatchedCards);
+      gameOver(emojisData, newMatchedCards);
+    }
+  };
+
   const gameOver = (emojisDataArray, matchedCardsArray) => {
     /**
      * To stop the if statement from evaluating to true when the app renders check if there is an emojisData and is being rendered
      * as memory cards.
      * Then compare the emojisData length to matchedCards length to determine there are no more cards left and the game is over.
      */
-    if(emojisDataArray.length && matchedCardsArray.length === emojisDataArray.length) {
+    if (
+      emojisDataArray.length &&
+      matchedCardsArray.length === emojisDataArray.length
+    ) {
       setIsGameOver(true);
     }
-  }
+  };
 
   const startGame = async (e) => {
     e.preventDefault();
@@ -95,22 +101,31 @@ function App() {
    */
   function turnCard(emojiElement, index) {
     //Check if the clicked card is already in the setSelectedCards array. selectedCardEntry will return emoji object or undefined.
-    const selectedCardEntry = selectedCards.find((emoji) => emoji.index === index);
+    const selectedCardEntry = selectedCards.find(
+      (emoji) => emoji.index === index
+    );
     //if the user clicked the same card twice do nothing if not assign the value in state
-    if(!selectedCardEntry && selectedCards.length < 2) {
-      const newSelectedCards = [...selectedCards, {emojiElement, index}];
+    if (!selectedCardEntry && selectedCards.length < 2) {
+      const newSelectedCards = [...selectedCards, { emojiElement, index }];
       setSelectedCards(newSelectedCards);
       addMatchedCards(newSelectedCards);
-    }else{
-      setSelectedCards([{emojiElement, index}]);
+    } else {
+      setSelectedCards([{ emojiElement, index }]);
     }
-}
+  }
 
   return (
     <main>
       <h1>Memory Game</h1>
       {!isGameOn && <Form handleSubmit={startGame} loading={isLoading} />}
-      {isGameOn && <MemoryCard data={emojisData} handleClick={turnCard}/>}
+      {isGameOn && (
+        <MemoryCard
+          data={emojisData}
+          handleClick={turnCard}
+          selectedCards={selectedCards}
+          matchedCards={matchedCards}
+        />
+      )}
     </main>
   );
 }
