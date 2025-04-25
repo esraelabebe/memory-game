@@ -18,6 +18,8 @@ function MemoryCard({ handleClick, data, selectedCards, matchedCards }) {
           content={emojiElement.emoji}
           style="btn btn--emoji"
           handleClick={() => handleClick(emojiElement.emoji, index)}
+          selectedCardEntry={selectedCardEntry}
+          matchedCardEntry={matchedCardEntry}
         />
       </li>
     );

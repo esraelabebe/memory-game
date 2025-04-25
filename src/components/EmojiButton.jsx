@@ -1,7 +1,17 @@
-function EmojiButton({ content, style, handleClick }) {
+function EmojiButton({
+  content,
+  style,
+  handleClick,
+  selectedCardEntry,
+  matchedCardEntry,
+}) {
+  let btnContent =
+    selectedCardEntry || matchedCardEntry
+      ? (btnContent = content)
+      : (btnContent = "?");
   return (
     <button className={style} onClick={handleClick}>
-      {content}
+      {btnContent}
     </button>
   );
 }
