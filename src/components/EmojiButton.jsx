@@ -5,10 +5,10 @@ function EmojiButton({
   selectedCardEntry,
   matchedCardEntry,
 }) {
-  let btnContent =
+  const btnContent =
     selectedCardEntry || matchedCardEntry
-      ? (btnContent = content)
-      : (btnContent = "?");
+      ?  content
+      : "?";
   return (
     <button className={style} onClick={handleClick}>
       {btnContent}
