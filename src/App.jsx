@@ -1,7 +1,7 @@
 import { getEmojisData } from "./components/api";
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
-import { useState, useEffect } from "react";
+import { useState, } from "react";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
