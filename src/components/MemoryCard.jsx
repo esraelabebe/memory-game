@@ -1,4 +1,5 @@
 import EmojiButton from "./EmojiButton";
+import "./MemoryCardEmojiButton.css";
 
 function MemoryCard({ handleClick, data, selectedCards, matchedCards }) {
   if (!data || data?.length === 0) {
@@ -12,11 +13,20 @@ function MemoryCard({ handleClick, data, selectedCards, matchedCards }) {
     const matchedCardEntry = matchedCards.find(
       (emoji) => emoji.index === index
     );
+
+    /**
+     * conditionally assign card elements a value depending on whether a card is selected, matched or neither.
+     */
+    const cardStyle = matchedCardEntry
+      ? "card-item--matched"
+      : selectedCardEntry
+      ? "card-item--selected"
+      : "";
+
     return (
-      <li key={index}>
+      <li key={index} className={`card-item ${cardStyle}`}>
         <EmojiButton
           content={emojiElement.emoji}
-          style="btn btn--emoji"
           handleClick={() => handleClick(emojiElement.emoji, index)}
           selectedCardEntry={selectedCardEntry}
           matchedCardEntry={matchedCardEntry}
