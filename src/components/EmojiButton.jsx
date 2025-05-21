@@ -1,12 +1,14 @@
 import "./MemoryCardEmojiButton.css";
 
 function EmojiButton({
-  content,
+  emojiElement,
+  index,
   handleClick,
   selectedCardEntry,
   matchedCardEntry,
 }) {
-  const btnContent = selectedCardEntry || matchedCardEntry ? content : "?";
+  const btnContent =
+    selectedCardEntry || matchedCardEntry ? emojiElement.emoji : "?";
 
   /**
    * conditionally add button style depending on whether a card is selected, matched or neither.
@@ -17,6 +19,15 @@ function EmojiButton({
     ? "btn--emoji__back--matched"
     : "btn--emoji__front";
 
+  /**
+   * conditionally an aria-label value depending on whether the card is matched, selected or neither.
+   */
+  const btnAria = matchedCardEntry
+    ? `${emojiElement.annotation}. Matched.`
+    : selectedCardEntry
+    ? `${emojiElement.annotation}. Not matched yet.`
+    : "Card upside down";
+
   return (
     <button
       className={`btn btn--emoji ${btnStyle}`}
@@ -26,6 +37,8 @@ function EmojiButton({
       Add a disabled attribute to the button and give it a value that is truthy when a card is matched, otherwise falsy.
       */
       disabled={matchedCardEntry}
+      aria-label={`Position ${index + 1}: ${btnAria}`}
+      aria-live="polite"
     >
       {btnContent}
     </button>
