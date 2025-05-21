@@ -26,7 +26,8 @@ function MemoryCard({ handleClick, data, selectedCards, matchedCards }) {
     return (
       <li key={index} className={`card-item ${cardStyle}`}>
         <EmojiButton
-          content={emojiElement.emoji}
+          emojiElement={emojiElement}
+          index={index}
           handleClick={() => handleClick(emojiElement.emoji, index)}
           selectedCardEntry={selectedCardEntry}
           matchedCardEntry={matchedCardEntry}
