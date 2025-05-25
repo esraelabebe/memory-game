@@ -1,7 +1,7 @@
 import { getEmojisData } from "./components/api";
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
-import { useState, } from "react";
+import { useState } from "react";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -100,12 +100,7 @@ function App() {
    *what should happen when a card is clicked.
    */
   function turnCard(emojiElement, index) {
-    //Check if the clicked card is already in the setSelectedCards array. selectedCardEntry will return emoji object or undefined.
-    const selectedCardEntry = selectedCards.find(
-      (emoji) => emoji.index === index
-    );
-    //if the user clicked the same card twice do nothing if not assign the value in state
-    if (!selectedCardEntry && selectedCards.length < 2) {
+    if (selectedCards.length < 2) {
       const newSelectedCards = [...selectedCards, { emojiElement, index }];
       setSelectedCards(newSelectedCards);
       addMatchedCards(newSelectedCards);
