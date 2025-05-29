@@ -1,4 +1,5 @@
 import { getEmojisData } from "./components/api";
+import AssistiveTechInfo from "./components/AssistiveTechInfo";
 import Form from "./components/Form";
 import MemoryCard from "./components/MemoryCard";
 import { useState } from "react";
@@ -10,7 +11,7 @@ function App() {
   //selectedCards track which card is selected by the user
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [areAllCardsMatched, setAreAllCardsMatched] = useState(false);
 
   //Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
@@ -34,7 +35,7 @@ function App() {
       emojisDataArray.length &&
       matchedCardsArray.length === emojisDataArray.length
     ) {
-      setIsGameOver(true);
+      setAreAllCardsMatched(true);
     }
   };
 
@@ -113,6 +114,12 @@ function App() {
     <main>
       <h1>Memory Game</h1>
       {!isGameOn && <Form handleSubmit={startGame} loading={isLoading} />}
+      {isGameOn && !areAllCardsMatched && (
+        <AssistiveTechInfo
+          emojisData={emojisData}
+          matchedCards={matchedCards}
+        />
+      )}
       {isGameOn && (
         <MemoryCard
           data={emojisData}
