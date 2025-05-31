@@ -14,9 +14,9 @@ function EmojiButton({
    * conditionally add button style depending on whether a card is selected, matched or neither.
    */
   const btnStyle = matchedCardEntry
-    ? "btn--emoji__back--selected"
-    : selectedCardEntry
     ? "btn--emoji__back--matched"
+    : selectedCardEntry
+    ? "btn--emoji__back--selected"
     : "btn--emoji__front";
 
   /**

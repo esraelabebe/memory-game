@@ -1,6 +1,7 @@
 import { getEmojisData } from "./components/api";
 import AssistiveTechInfo from "./components/AssistiveTechInfo";
 import Form from "./components/Form";
+import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
 import { useState } from "react";
 
@@ -120,6 +121,7 @@ function App() {
           matchedCards={matchedCards}
         />
       )}
+      {areAllCardsMatched && <GameOver />}
       {isGameOn && (
         <MemoryCard
           data={emojisData}

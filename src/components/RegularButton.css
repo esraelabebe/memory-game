@@ -1,0 +1,19 @@
+.regular-btn {
+    background-color: var(--dark-secondary);
+    font-family: inherit;
+    border: 3px solid var(--light-primary);
+    border-radius: 16px;
+    cursor: pointer;
+}
+.btn--text {
+    color: var(--light-secondary);
+    font-size: 2rem;
+    width: max-content;
+    margin: 0 auto;
+    padding: .25em .75em;
+}
+.btn--text:hover,
+.btn--text:focus {
+  border-color: var(--on-focus);
+  box-shadow: 0 0 5px 1px var(--dark-primary);
+}
