@@ -7,5 +7,4 @@ function RegularButton({ children, handleClick }) {
     </button>
   );
 }
-
 export default RegularButton;
