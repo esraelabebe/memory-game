@@ -111,6 +111,16 @@ function App() {
     }
   }
 
+  /**
+   *This function reset the game
+   */
+  function resetGame() {
+    setIsGameOn(false);
+    setSelectedCards([]);
+    setMatchedCards([]);
+    setAreAllCardsMatched(false);
+  }
+
   return (
     <main>
       <h1>Memory Game</h1>
@@ -121,7 +131,7 @@ function App() {
           matchedCards={matchedCards}
         />
       )}
-      {areAllCardsMatched && <GameOver />}
+      {areAllCardsMatched && <GameOver handleClick={resetGame} />}
       {isGameOn && (
         <MemoryCard
           data={emojisData}
