@@ -13,6 +13,7 @@ function App() {
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [areAllCardsMatched, setAreAllCardsMatched] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   //Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
@@ -53,6 +54,7 @@ function App() {
       setIsGameOn(true);
     } catch (err) {
       console.error(err);
+      setIsError(true);
     }
   };
 
@@ -112,13 +114,17 @@ function App() {
   }
 
   /**
-   *This function reset the game
+   *This function reset the game when the user clicks the play again button.
    */
   function resetGame() {
     setIsGameOn(false);
     setSelectedCards([]);
     setMatchedCards([]);
     setAreAllCardsMatched(false);
+  }
+
+  function resetError() {
+    setIsError(false);
   }
 
   return (
