@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { getEmojisData } from "./components/api";
 import AssistiveTechInfo from "./components/AssistiveTechInfo";
 import Form from "./components/Form";
 import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
-import { useState } from "react";
+import ErrorCard from "./components/ErrorCard";
 
 function App() {
   const [isGameOn, setIsGameOn] = useState(false);
@@ -130,7 +131,7 @@ function App() {
   return (
     <main>
       <h1>Memory Game</h1>
-      {!isGameOn && <Form handleSubmit={startGame} loading={isLoading} />}
+      {!isGameOn && !isError && <Form handleSubmit={startGame} loading={isLoading} />}
       {isGameOn && !areAllCardsMatched && (
         <AssistiveTechInfo
           emojisData={emojisData}
@@ -146,6 +147,7 @@ function App() {
           matchedCards={matchedCards}
         />
       )}
+      {isError && <ErrorCard handleClick={resetError}/>}
     </main>
   );
 }

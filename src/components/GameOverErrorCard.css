@@ -5,6 +5,7 @@
     background-color: var(--dark-secondary);
     color: var(--light-primary);
     border-radius: 16px;
+    align-items: center;
 }
 .wrapper--accent {
     padding: 2em 3em;
@@ -13,4 +14,7 @@
 }
 .p--large {
     font-size: 1.5rem;
+}
+.p--regular {
+    font-size: 1.125em;
 }
