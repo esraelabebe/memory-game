@@ -7,6 +7,12 @@ import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
 
 function App() {
+  const initialFormData = {
+    group: "animals-nature",
+    number: 10,
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +54,10 @@ function App() {
       setIsLoading(true);
       const response = await getEmojisData();
       setIsLoading(false);
-      const dataSlice = getDataSlice(response);
+      const filteredResponse = response.filter((emoji) => {
+        return emoji.group === formData.group;
+      })
+      const dataSlice = getDataSlice(filteredResponse);
       const emojisArray = getEmojisArray(dataSlice);
 
       setEmojisData(emojisArray);
@@ -66,7 +75,7 @@ function App() {
    */
   function getRandomIndices(response) {
     const randomIndicesArray = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < formData.number / 2; i++) {
       const randomNum = Math.floor(Math.random() * response.length);
       if (!randomIndicesArray.includes(randomNum)) {
         randomIndicesArray.push(randomNum);
@@ -131,7 +140,9 @@ function App() {
   return (
     <main>
       <h1>Memory Game</h1>
-      {!isGameOn && !isError && <Form handleSubmit={startGame} loading={isLoading} />}
+      {!isGameOn && !isError && (
+        <Form handleSubmit={startGame} loading={isLoading} />
+      )}
       {isGameOn && !areAllCardsMatched && (
         <AssistiveTechInfo
           emojisData={emojisData}
@@ -147,7 +158,7 @@ function App() {
           matchedCards={matchedCards}
         />
       )}
-      {isError && <ErrorCard handleClick={resetError}/>}
+      {isError && <ErrorCard handleClick={resetError} />}
     </main>
   );
 }
