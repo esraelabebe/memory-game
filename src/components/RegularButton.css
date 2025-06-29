@@ -1,13 +1,13 @@
 .regular-btn {
     background-color: var(--dark-secondary);
     font-family: inherit;
-    border: 3px solid var(--light-primary);
+    border: 2px solid var(--light-primary);
     border-radius: 16px;
     cursor: pointer;
 }
 .btn--text {
     color: var(--light-secondary);
-    font-size: 2rem;
+    font-size: 1.7rem;
     width: max-content;
     margin: 0 auto;
     padding: .25em .75em;

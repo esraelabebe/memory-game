@@ -48,6 +48,10 @@ function App() {
     }
   };
 
+  function handleFormChange(e) {
+    console.log(`${e.target.name} : ${e.target.value}`);
+  }
+
   const startGame = async (e) => {
     e.preventDefault();
     try {
@@ -56,7 +60,7 @@ function App() {
       setIsLoading(false);
       const filteredResponse = response.filter((emoji) => {
         return emoji.group === formData.group;
-      })
+      });
       const dataSlice = getDataSlice(filteredResponse);
       const emojisArray = getEmojisArray(dataSlice);
 
@@ -141,7 +145,11 @@ function App() {
     <main>
       <h1>Memory Game</h1>
       {!isGameOn && !isError && (
-        <Form handleSubmit={startGame} loading={isLoading} />
+        <Form
+          handleSubmit={startGame}
+          handleChange={handleFormChange}
+          loading={isLoading}
+        />
       )}
       {isGameOn && !areAllCardsMatched && (
         <AssistiveTechInfo
