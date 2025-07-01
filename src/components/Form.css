@@ -1,0 +1,41 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  text-align: start;
+}
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  background-color: var(--dark-secondary);
+  color: var(--light-secondary);
+  border-radius: 0.5em;
+}
+form {
+  gap: 2em;
+  font-size: 1.2rem;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+.form__inner-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+select {
+  background-color: var(---dark-secondary);
+  color: var(--light-secondary);
+  font-size: 1rem;
+  font-family: inherit;
+  font-weight: bolder;
+  padding: 1em;
+  border: 2px solid var(--light-primary);
+  border-radius: 0.7em;
+  cursor: pointer;
+}
+select:hover,
+select:focus {
+    background-color: var(--on-focus);
+    box-shadow: 0 0 5px 1px var(--dark-primary)
+}
