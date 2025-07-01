@@ -1,5 +1,4 @@
 import RegularButton from "./RegularButton";
-import "./Form.css";
 
 function Form({ handleSubmit, handleChange, loading }) {
   return (
