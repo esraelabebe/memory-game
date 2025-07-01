@@ -10,7 +10,7 @@ function Form({ handleSubmit, handleChange, loading }) {
         <form className="form-wrapper">
           <div className="form__inner-wrapper">
             <label htmlFor="category">Select an emoji category</label>
-            <select name="category" id="category" onChange={handleChange}>
+            <select name="group" id="category" onChange={handleChange}>
               <option value="animals-nature">Animals & Nature</option>
               <option value="food-drink">Food Drink</option>
               <option value="travel-places">Travel and Places</option>
