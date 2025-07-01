@@ -7,6 +7,12 @@ import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
 
 function App() {
+  const initialFormData = {
+    group: "animals-nature",
+    number: 10,
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,13 +48,20 @@ function App() {
     }
   };
 
+  function handleFormChange(e) {
+    console.log(`${e.target.name} : ${e.target.value}`);
+  }
+
   const startGame = async (e) => {
     e.preventDefault();
     try {
       setIsLoading(true);
       const response = await getEmojisData();
       setIsLoading(false);
-      const dataSlice = getDataSlice(response);
+      const filteredResponse = response.filter((emoji) => {
+        return emoji.group === formData.group;
+      });
+      const dataSlice = getDataSlice(filteredResponse);
       const emojisArray = getEmojisArray(dataSlice);
 
       setEmojisData(emojisArray);
@@ -66,7 +79,7 @@ function App() {
    */
   function getRandomIndices(response) {
     const randomIndicesArray = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < formData.number / 2; i++) {
       const randomNum = Math.floor(Math.random() * response.length);
       if (!randomIndicesArray.includes(randomNum)) {
         randomIndicesArray.push(randomNum);
@@ -85,9 +98,9 @@ function App() {
   }
 
   /**
-   *The getEmojisArray function takes an array of five randomly selected emojis provided by the dataSlice function as
-   *its parameter. It then duplicates each unique emoji's data object shuffles the array using the Fisher-Yates algorithm and
-   *returns the shuffled array.
+   * The getEmojisArray function takes an array of five randomly selected emojis provided by the dataSlice function as
+   * its parameter. It then duplicates each unique emoji's data object shuffles the array using the Fisher-Yates algorithm and
+   * returns the shuffled array.
    */
   function getEmojisArray(data) {
     const pairedEmojisArray = [...data, ...data];
@@ -102,7 +115,7 @@ function App() {
   }
 
   /**
-   *what should happen when a card is clicked.
+   * what should happen when a card is clicked.
    */
   function turnCard(emojiElement, index) {
     if (selectedCards.length < 2) {
@@ -115,7 +128,7 @@ function App() {
   }
 
   /**
-   *This function reset the game when the user clicks the play again button.
+   * This function reset the game when the user clicks the play again button.
    */
   function resetGame() {
     setIsGameOn(false);
@@ -131,7 +144,13 @@ function App() {
   return (
     <main>
       <h1>Memory Game</h1>
-      {!isGameOn && !isError && <Form handleSubmit={startGame} loading={isLoading} />}
+      {!isGameOn && !isError && (
+        <Form
+          handleSubmit={startGame}
+          handleChange={handleFormChange}
+          loading={isLoading}
+        />
+      )}
       {isGameOn && !areAllCardsMatched && (
         <AssistiveTechInfo
           emojisData={emojisData}
@@ -147,7 +166,7 @@ function App() {
           matchedCards={matchedCards}
         />
       )}
-      {isError && <ErrorCard handleClick={resetError}/>}
+      {isError && <ErrorCard handleClick={resetError} />}
     </main>
   );
 }
