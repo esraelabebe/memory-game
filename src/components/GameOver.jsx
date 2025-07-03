@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import "./GameOver.css";
+import "./GameOverErrorCard.css";
 import RegularButton from "./RegularButton";
 
 function GameOver({ handleClick }) {

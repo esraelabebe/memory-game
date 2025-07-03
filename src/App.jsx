@@ -1,11 +1,18 @@
+import { useState } from "react";
 import { getEmojisData } from "./components/api";
 import AssistiveTechInfo from "./components/AssistiveTechInfo";
 import Form from "./components/Form";
 import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
-import { useState } from "react";
+import ErrorCard from "./components/ErrorCard";
 
 function App() {
+  const initialFormData = {
+    group: "animals-nature",
+    number: 10,
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +20,7 @@ function App() {
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [areAllCardsMatched, setAreAllCardsMatched] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   //Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
@@ -46,13 +54,17 @@ function App() {
       setIsLoading(true);
       const response = await getEmojisData();
       setIsLoading(false);
-      const dataSlice = getDataSlice(response);
+      const filteredResponse = response.filter((emoji) => {
+        return emoji.group === formData.group;
+      })
+      const dataSlice = getDataSlice(filteredResponse);
       const emojisArray = getEmojisArray(dataSlice);
 
       setEmojisData(emojisArray);
       setIsGameOn(true);
     } catch (err) {
       console.error(err);
+      setIsError(true);
     }
   };
 
@@ -63,7 +75,7 @@ function App() {
    */
   function getRandomIndices(response) {
     const randomIndicesArray = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < formData.number / 2; i++) {
       const randomNum = Math.floor(Math.random() * response.length);
       if (!randomIndicesArray.includes(randomNum)) {
         randomIndicesArray.push(randomNum);
@@ -112,7 +124,7 @@ function App() {
   }
 
   /**
-   *This function reset the game
+   *This function reset the game when the user clicks the play again button.
    */
   function resetGame() {
     setIsGameOn(false);
@@ -121,10 +133,16 @@ function App() {
     setAreAllCardsMatched(false);
   }
 
+  function resetError() {
+    setIsError(false);
+  }
+
   return (
     <main>
       <h1>Memory Game</h1>
-      {!isGameOn && <Form handleSubmit={startGame} loading={isLoading} />}
+      {!isGameOn && !isError && (
+        <Form handleSubmit={startGame} loading={isLoading} />
+      )}
       {isGameOn && !areAllCardsMatched && (
         <AssistiveTechInfo
           emojisData={emojisData}
@@ -140,6 +158,7 @@ function App() {
           matchedCards={matchedCards}
         />
       )}
+      {isError && <ErrorCard handleClick={resetError} />}
     </main>
   );
 }
