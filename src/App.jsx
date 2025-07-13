@@ -11,7 +11,7 @@ function App() {
     group: "animals-nature",
     number: 10,
   };
-
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const [formData, setFormData] = useState(initialFormData);
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
@@ -49,7 +49,11 @@ function App() {
   };
 
   function handleFormChange(e) {
-    setFormData(prevFormData => ({...prevFormData, [e.target.name]: e.target.value}));
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: e.target.value,
+    }));
+    console.log(formData);
   }
 
   const startGame = async (e) => {
@@ -57,18 +61,27 @@ function App() {
     try {
       setIsLoading(true);
       const response = await getEmojisData();
+      console.log("response",response);
       setIsLoading(false);
       const filteredResponse = response.filter((emoji) => {
+        console.log("formData.group",formData.group);
+        console.log("emoji.group",emoji.group);
         return emoji.group === formData.group;
       });
+      
+      console.log("filteredResponse",filteredResponse);
       const dataSlice = getDataSlice(filteredResponse);
       const emojisArray = getEmojisArray(dataSlice);
 
       setEmojisData(emojisArray);
       setIsGameOn(true);
+      setIsFirstRender(false);
     } catch (err) {
-      console.error(err);
+      console.error("err",err);
       setIsError(true);
+      setIsFirstRender(false);
+    } finally {
+      setIsFirstRender(false);
     }
   };
 
@@ -79,7 +92,7 @@ function App() {
    */
   function getRandomIndices(response) {
     const randomIndicesArray = [];
-    for (let i = 0; i < (formData.number / 2); i++) {
+    for (let i = 0; i < formData.number / 2; i++) {
       const randomNum = Math.floor(Math.random() * response.length);
       if (!randomIndicesArray.includes(randomNum)) {
         randomIndicesArray.push(randomNum);
@@ -148,6 +161,7 @@ function App() {
         <Form
           handleSubmit={startGame}
           handleChange={handleFormChange}
+          isFirstRender={isFirstRender}
           loading={isLoading}
         />
       )}
