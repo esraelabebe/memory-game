@@ -6,19 +6,19 @@ const data = {
     },
     {
       name: "Food and drink",
-      vale: "food-drink",
+      value: "food-drink",
     },
     {
       name: "Travel and places",
-      vale: "travel-places",
+      value: "travel-places",
     },
     {
       name: "Objects",
-      vale: "objects",
+      value: "objects",
     },
     {
       name: "Symbols",
-      vale: "symbols",
+      value: "symbols",
     },
   ],
   number: [
