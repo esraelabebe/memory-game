@@ -37,5 +37,4 @@ select {
 select:hover,
 select:focus {
     background-color: var(--on-focus);
-    box-shadow: 0 0 5px 1px var(--dark-primary)
 }

@@ -53,7 +53,6 @@ function App() {
       ...prevFormData,
       [e.target.name]: e.target.value,
     }));
-    console.log(formData);
   }
 
   const startGame = async (e) => {
@@ -61,15 +60,10 @@ function App() {
     try {
       setIsLoading(true);
       const response = await getEmojisData();
-      console.log("response",response);
       setIsLoading(false);
       const filteredResponse = response.filter((emoji) => {
-        console.log("formData.group",formData.group);
-        console.log("emoji.group",emoji.group);
         return emoji.group === formData.group;
       });
-      
-      console.log("filteredResponse",filteredResponse);
       const dataSlice = getDataSlice(filteredResponse);
       const emojisArray = getEmojisArray(dataSlice);
 
@@ -77,7 +71,7 @@ function App() {
       setIsGameOn(true);
       setIsFirstRender(false);
     } catch (err) {
-      console.error("err",err);
+      console.error(err);
       setIsError(true);
       setIsFirstRender(false);
     } finally {
