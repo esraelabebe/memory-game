@@ -73,7 +73,6 @@ function App() {
     } catch (err) {
       console.error(err);
       setIsError(true);
-      setIsFirstRender(false);
     } finally {
       setIsFirstRender(false);
     }
