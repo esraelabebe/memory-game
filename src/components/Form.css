@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 1.5em;
   text-align: start;
+  margin: 30px;
 }
 .form-wrapper {
   display: flex;

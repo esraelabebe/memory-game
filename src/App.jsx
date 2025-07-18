@@ -149,7 +149,15 @@ function App() {
 
   return (
     <main>
-      <h1>Memory Game</h1>
+      <div className="logo">
+          <img
+            src="src/assets/Memory-game-logo.png"
+            alt="logo"
+            width="80px"
+            height="80px"
+          />
+        <h1>Memory Game</h1>
+      </div>
       {!isGameOn && !isError && (
         <Form
           handleSubmit={startGame}
