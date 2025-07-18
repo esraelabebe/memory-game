@@ -1,35 +1,30 @@
+import { useRef, useEffect } from "react";
 import RegularButton from "./RegularButton";
+import Select from "./Select";
 import "./Form.css";
 
-function Form({ handleSubmit, handleChange, loading }) {
+function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
+  const divRef = useRef(null);
+
+  useEffect(() => {
+    !isFirstRender && divRef.current.focus();
+  }, [isFirstRender]);
+
   return (
-    <div className="form-container">
+    <div className="form-container" ref={divRef} tabIndex={-1}>
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <form className="form-wrapper">
-          <div className="form__inner-wrapper">
-            <label htmlFor="category">Select an emoji category</label>
-            <select name="group" id="category" onChange={handleChange}>
-              <option value="animals-nature">Animals & Nature</option>
-              <option value="food-drink">Food Drink</option>
-              <option value="travel-places">Travel and Places</option>
-              <option value="objects">Objects</option>
-              <option value="symbols">Symbols</option>
-            </select>
-          </div>
-          <div className="form__inner-wrapper">
-            <label htmlFor="number">Select the number of memory cards</label>
-            <select name="number" id="number" onChange={handleChange}>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-              <option value="40">40</option>
-              <option value="50">50</option>
-            </select>
-          </div>
-          <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
-        </form>
+        <>
+          <p className="p--regular">
+            Customize the game by selecting an emoji group and a number of
+            memory cards.
+          </p>
+          <form className="form-wrapper">
+            <Select handleChange={handleChange} />
+            <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
+          </form>
+        </>
       )}
     </div>
   );
