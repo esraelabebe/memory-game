@@ -49,7 +49,7 @@ function App() {
   };
 
   function handleFormChange(e) {
-    console.log(`${e.target.name} : ${e.target.value}`);
+    setFormData(prevFormData => ({...prevFormData, [e.target.name]: e.target.value}));
   }
 
   const startGame = async (e) => {
@@ -79,7 +79,7 @@ function App() {
    */
   function getRandomIndices(response) {
     const randomIndicesArray = [];
-    for (let i = 0; i < formData.number / 2; i++) {
+    for (let i = 0; i < (formData.number / 2); i++) {
       const randomNum = Math.floor(Math.random() * response.length);
       if (!randomIndicesArray.includes(randomNum)) {
         randomIndicesArray.push(randomNum);
