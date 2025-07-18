@@ -98,9 +98,9 @@ function App() {
   }
 
   /**
-   *The getEmojisArray function takes an array of five randomly selected emojis provided by the dataSlice function as
-   *its parameter. It then duplicates each unique emoji's data object shuffles the array using the Fisher-Yates algorithm and
-   *returns the shuffled array.
+   * The getEmojisArray function takes an array of five randomly selected emojis provided by the dataSlice function as
+   * its parameter. It then duplicates each unique emoji's data object shuffles the array using the Fisher-Yates algorithm and
+   * returns the shuffled array.
    */
   function getEmojisArray(data) {
     const pairedEmojisArray = [...data, ...data];
@@ -115,7 +115,7 @@ function App() {
   }
 
   /**
-   *what should happen when a card is clicked.
+   * what should happen when a card is clicked.
    */
   function turnCard(emojiElement, index) {
     if (selectedCards.length < 2) {
@@ -128,7 +128,7 @@ function App() {
   }
 
   /**
-   *This function reset the game when the user clicks the play again button.
+   * This function reset the game when the user clicks the play again button.
    */
   function resetGame() {
     setIsGameOn(false);
