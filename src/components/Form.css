@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 1.5em;
   text-align: start;
+  margin: 30px;
 }
 .form-wrapper {
   display: flex;
@@ -37,5 +38,4 @@ select {
 select:hover,
 select:focus {
     background-color: var(--on-focus);
-    box-shadow: 0 0 5px 1px var(--dark-primary)
 }
