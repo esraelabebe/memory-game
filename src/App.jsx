@@ -153,8 +153,8 @@ function App() {
           <img
             src="src/assets/Memory-game-logo.png"
             alt="logo"
-            width="80px"
-            height="80px"
+            width="70px"
+            height="70px"
           />
         <h1>Memory Game</h1>
       </div>
