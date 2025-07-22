@@ -10,6 +10,6 @@ function Select({ handleChange }) {
       </select>
     </div>
   ));
-  return <>{selectEl}</>;
+  return selectEl;
 }
 export default Select;

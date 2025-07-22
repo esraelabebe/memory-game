@@ -5,6 +5,6 @@ function Option({ valueArray }) {
     </option>
   ));
 
-  return <>{optionEl}</>;
+  return optionEl;
 }
 export default Option;
