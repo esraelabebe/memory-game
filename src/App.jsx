@@ -151,7 +151,7 @@ function App() {
     <main>
       <div className="logo">
           <img
-            src="/public/assets/Memory-Game-Logo.png"
+            src="/assets/Memory-Game-Logo.png"
             alt="logo"
             width="70px"
             height="70px"
