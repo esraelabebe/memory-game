@@ -8,7 +8,7 @@ import ErrorCard from "./components/ErrorCard";
 
 function App() {
   const initialFormData = {
-    group: "animals-nature",
+    group: "food-drink",
     number: 10,
   };
   const [isFirstRender, setIsFirstRender] = useState(true);
