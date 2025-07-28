@@ -1,12 +1,12 @@
 const data = {
   group: [
     {
-      name: "Food and drink",
-      value: "food-drink",
-    },
-    {
       name: "Animals and nature",
       value: "animals-nature",
+    },
+    {
+      name: "Food and drink",
+      value: "food-drink",
     },
     {
       name: "Travel and places",

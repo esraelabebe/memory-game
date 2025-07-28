@@ -8,7 +8,7 @@ import ErrorCard from "./components/ErrorCard";
 
 function App() {
   const initialFormData = {
-    group: "food-drink",
+    group: "animals-nature",
     number: 10,
   };
   const [isFirstRender, setIsFirstRender] = useState(true);
@@ -55,7 +55,7 @@ function App() {
     }));
   }
 
-  const startGame = async (e) => {
+  const startGame = async (e, newFormDataNumber) => {
     e.preventDefault();
     try {
       setIsLoading(true);
@@ -64,7 +64,7 @@ function App() {
       const filteredResponse = response.filter((emoji) => {
         return emoji.group === formData.group;
       });
-      const dataSlice = getDataSlice(filteredResponse);
+      const dataSlice = getDataSlice(filteredResponse, newFormDataNumber);
       const emojisArray = getEmojisArray(dataSlice);
 
       setEmojisData(emojisArray);
@@ -83,9 +83,9 @@ function App() {
    * to the length of the "data" array push these numbers to randomIndicesArray variable and returns an array containing the
    * five randomly selected values.
    */
-  function getRandomIndices(response) {
+  function getRandomIndices(response, newFormDataNumber) {
     const randomIndicesArray = [];
-    for (let i = 0; i < formData.number / 2; i++) {
+    for (let i = 0; i < (newFormDataNumber ?? formData.number) / 2; i++) {
       const randomNum = Math.floor(Math.random() * response.length);
       if (!randomIndicesArray.includes(randomNum)) {
         randomIndicesArray.push(randomNum);
@@ -96,8 +96,8 @@ function App() {
     return randomIndicesArray;
   }
 
-  function getDataSlice(response) {
-    const randomIndices = getRandomIndices(response);
+  function getDataSlice(response, newFormDataNumber) {
+    const randomIndices = getRandomIndices(response, newFormDataNumber);
 
     const dataSlice = randomIndices.map((index) => response[index]);
     return dataSlice;
@@ -150,12 +150,12 @@ function App() {
   return (
     <main>
       <div className="logo">
-          <img
-            src="/assets/Memory-Game-Logo.png"
-            alt="logo"
-            width="70px"
-            height="70px"
-          />
+        <img
+          src="/assets/Memory-Game-Logo.png"
+          alt="logo"
+          width="70px"
+          height="70px"
+        />
         <h1>Memory Game</h1>
       </div>
       {!isGameOn && !isError && (
@@ -172,7 +172,15 @@ function App() {
           matchedCards={matchedCards}
         />
       )}
-      {areAllCardsMatched && <GameOver handleClick={resetGame} />}
+      {areAllCardsMatched && (
+        <GameOver
+          handleClick={resetGame}
+          formData={formData}
+          setFormData={setFormData}
+          startGame={startGame}
+          resetGame={resetGame}
+        />
+      )}
       {isGameOn && (
         <MemoryCard
           data={emojisData}
