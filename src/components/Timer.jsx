@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-function Timer({ isGameOn, areAllCardsMatched }) {
-  const [time, setTime] = useState(0);
+function Timer({ isGameOn, areAllCardsMatched, time, setTime }) {
+  // const [time, setTime] = useState(0);
 
   useEffect(() => {
     let interval;

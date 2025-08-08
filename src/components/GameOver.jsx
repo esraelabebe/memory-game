@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import "./GameOverErrorCard.css";
 import RegularButton from "./RegularButton";
 import Level from "./Level";
+import Timer from "./Timer";
 
 function GameOver({
   handleClick,
@@ -9,6 +10,8 @@ function GameOver({
   setFormData,
   startGame,
   resetGame,
+  time,
+  setTime
 }) {
   /**
    *Add focus to this new DOM node and prompt screen readers to read its content
@@ -24,6 +27,13 @@ function GameOver({
     <div className="wrapper wrapper--accent" ref={divRef} tabIndex={-1}>
       <p className="p--large">You've matched all the memory cards! 🎉</p>
       <p>Built by Esrael Abebe.</p>
+      <div className="wrapper--score">
+        {/** Show timer and best score after all cards are matched */}
+        <div className="score">
+          <p>Time:</p>
+          <Timer time={time} setTime={setTime} />
+        </div>
+      </div>
       <div className="play--button">
         <Level
           formData={formData}
