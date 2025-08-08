@@ -5,6 +5,7 @@ import Form from "./components/Form";
 import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
+import Timer from "./components/Timer";
 
 function App() {
   const initialFormData = {
@@ -165,6 +166,9 @@ function App() {
           isFirstRender={isFirstRender}
           loading={isLoading}
         />
+      )}
+      {isGameOn && (
+        <Timer isGameOn={isGameOn} areAllCardsMatched={areAllCardsMatched} />
       )}
       {isGameOn && !areAllCardsMatched && (
         <AssistiveTechInfo

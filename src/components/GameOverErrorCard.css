@@ -19,3 +19,13 @@
 .p--regular {
     font-size: 1.125em;
 }
+.play--button {
+    display: flex;
+    gap: 50px;
+}
+@media (max-width: 542px) {
+    .play--button {
+        flex-direction: column;
+        gap: 20px;
+    }
+}

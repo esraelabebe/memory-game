@@ -1,8 +1,8 @@
 import "./RegularButton.css";
 
-function RegularButton({ children, handleClick }) {
+function RegularButton({ children, handleClick, handleNextLevel }) {
   return (
-    <button className="regular-btn btn--text" onClick={handleClick}>
+    <button className="regular-btn btn--text" onClick={handleClick ?? handleNextLevel}>
       {children}
     </button>
   );
