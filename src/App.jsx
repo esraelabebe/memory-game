@@ -5,6 +5,7 @@ import Form from "./components/Form";
 import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
+import Timer from "./components/Timer";
 
 function App() {
   const initialFormData = {
@@ -21,6 +22,7 @@ function App() {
   const [matchedCards, setMatchedCards] = useState([]);
   const [areAllCardsMatched, setAreAllCardsMatched] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [time, setTime] = useState(0);
 
   //Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
@@ -167,6 +169,14 @@ function App() {
         />
       )}
       {isGameOn && !areAllCardsMatched && (
+        <Timer
+          isGameOn={isGameOn}
+          areAllCardsMatched={areAllCardsMatched}
+          time={time}
+          setTime={setTime}
+        />
+      )}
+      {isGameOn && !areAllCardsMatched && (
         <AssistiveTechInfo
           emojisData={emojisData}
           matchedCards={matchedCards}
@@ -179,6 +189,8 @@ function App() {
           setFormData={setFormData}
           startGame={startGame}
           resetGame={resetGame}
+          time={time}
+          setTime={setTime}
         />
       )}
       {isGameOn && (
