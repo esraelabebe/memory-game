@@ -143,6 +143,7 @@ function App() {
     setSelectedCards([]);
     setMatchedCards([]);
     setAreAllCardsMatched(false);
+    setTime(0);
   }
 
   function resetError() {
