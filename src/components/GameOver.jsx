@@ -1,8 +1,9 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import "./GameOverErrorCard.css";
 import RegularButton from "./RegularButton";
 import Level from "./Level";
 import Timer from "./Timer";
+import { formatTime } from './format-time';
 
 function GameOver({
   handleClick,
@@ -11,8 +12,21 @@ function GameOver({
   startGame,
   resetGame,
   time,
-  setTime
+  setTime,
 }) {
+  const [bestScore, setBestScore] = useState(() => {
+    const stored = localStorage.getItem("BestScoreData");
+    return stored ? JSON.parse(stored) : null;
+  });
+
+    useEffect(() => {
+    if (typeof time === "number" && (bestScore === null || time < bestScore)) {
+      setBestScore(time);
+      // Store data in localStorage whenever 'data' changes
+      localStorage.setItem("BestScoreData", JSON.stringify(time));
+    }
+  }, [time, bestScore]);// Dependency array ensures this runs when 'data' changes
+
   /**
    *Add focus to this new DOM node and prompt screen readers to read its content
    *aloud as soon as it renders.
@@ -31,7 +45,11 @@ function GameOver({
         {/** Show timer and best score after all cards are matched */}
         <div className="score">
           <p>Time:</p>
-          <Timer time={time} setTime={setTime} />
+          <Timer time={time} setTime={setTime} bestScore={bestScore}/>
+        </div>
+        <div className="score">
+          <p>Personal best:</p>
+          <p>{formatTime(bestScore)}</p>
         </div>
       </div>
       <div className="play--button">
