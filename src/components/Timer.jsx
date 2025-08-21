@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import { formatTime } from './format-time';
 
 function Timer({ isGameOn, areAllCardsMatched, time, setTime }) {
-  // const [time, setTime] = useState(0);
 
   useEffect(() => {
     let interval;
@@ -13,18 +13,7 @@ function Timer({ isGameOn, areAllCardsMatched, time, setTime }) {
       clearInterval(interval);
     }
     return () => clearInterval(interval); // Cleanup on unmount
-  }, [isGameOn, areAllCardsMatched]);
-
-  // Formatting for display (e.g., hours, minutes, seconds, milliseconds)
-  const formatTime = (sec) => {
-    const hours = Math.floor(sec / 3600);
-    const minutes = Math.floor((sec % 3600) / 60);
-
-    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(
-      2,
-      "0"
-    )}:${String(sec).padStart(2, "0")}`;
-  };
+  }, [isGameOn, areAllCardsMatched, setTime] );
 
   return (
     <div>
