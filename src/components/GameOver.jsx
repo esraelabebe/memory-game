@@ -28,8 +28,8 @@ function GameOver({
   }, [time, bestScore]); // Dependency array ensures this runs when 'data' changes
 
   /**
-   *Add focus to this new DOM node and prompt screen readers to read its content
-   *aloud as soon as it renders.
+   * Add focus to this new DOM node and prompt screen readers to read its content
+   * aloud as soon as it renders.
    */
   const divRef = useRef(null);
 
@@ -65,8 +65,8 @@ function GameOver({
           resetGame={resetGame}
         />
         {/**
-         *Render an instance of the "RegularButton" component
-         *This button should reset the game and return the user to the initial form displayed at the start.
+         * Render an instance of the "RegularButton" component
+         * This button should reset the game and return the user to the initial form displayed at the start.
          */}
         <RegularButton handleClick={handleClick}>Play again</RegularButton>
       </div>
