@@ -31,11 +31,11 @@ function EmojiButton({
   return (
     <button
       className={`btn btn--emoji ${btnStyle}`}
-      //if the user clicked the same card twice do nothing if not call "turnCard" function.
+      // if the user clicked the same card twice do nothing if not call "turnCard" function.
       onClick={selectedCardEntry ? null : handleClick}
-      /*To improve the user experience disable the emoji button whenever a memory card is matched.
-      Add a disabled attribute to the button and give it a value that is truthy when a card is matched, otherwise falsy.
-      */
+      /* To improve the user experience disable the emoji button whenever a memory card is matched.
+       * Add a disabled attribute to the button and give it a value that is truthy when a card is matched, otherwise falsy.
+       */
       disabled={matchedCardEntry}
       aria-label={`Position ${index + 1}: ${btnAria}`}
       aria-live="polite"

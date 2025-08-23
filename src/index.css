@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 * {
     margin: 0;
 }
@@ -34,7 +36,7 @@ main {
   padding: 2em;
 }
 h1 {
-  color: var(--light-secondary);
+  /* color: var(--light-secondary); */
   font-size: 3.2em;
   line-height: 1.1;
   letter-spacing: 2px;

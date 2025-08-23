@@ -17,14 +17,14 @@ function App() {
   const [isGameOn, setIsGameOn] = useState(false);
   const [emojisData, setEmojisData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  //selectedCards track which card is selected by the user
+  // selectedCards track which card is selected by the user
   const [selectedCards, setSelectedCards] = useState([]);
   const [matchedCards, setMatchedCards] = useState([]);
   const [areAllCardsMatched, setAreAllCardsMatched] = useState(false);
   const [isError, setIsError] = useState(false);
   const [time, setTime] = useState(0);
 
-  //Detect for matching cards and add them to "matchedCards" state variable.
+  // Detect for matching cards and add them to "matchedCards" state variable.
   const addMatchedCards = (selectedCardsList) => {
     if (
       selectedCardsList.length === 2 &&
