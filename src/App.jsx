@@ -151,15 +151,17 @@ function App() {
   }
 
   return (
-    <main>
-      <div className="logo">
+    <main class="flex flex-col items-center gap-9 min-h-screen pt-10">
+      <div class="flex gap-6 items-center">
         <img
           src="/assets/Memory-Game-Logo.png"
           alt="logo"
           width="70px"
           height="70px"
         />
-        <h1>Memory Game</h1>
+        <h1 class="text-teal-50 text-3xl sm:text-5xl tracking-widest m-0">
+          Memory Game
+        </h1>
       </div>
       {!isGameOn && !isError && (
         <Form
