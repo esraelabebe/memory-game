@@ -1,7 +1,6 @@
 import { useRef, useEffect } from "react";
 import RegularButton from "./RegularButton";
 import Select from "./Select";
-import "./Form.css";
 
 function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
   const divRef = useRef(null);
@@ -11,7 +10,7 @@ function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
   }, [isFirstRender]);
 
   return (
-    <div className="form-container" ref={divRef} tabIndex={-1}>
+    <div class="flex flex-col gap-6 text-start m-7" ref={divRef} tabIndex={-1}>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -20,7 +19,7 @@ function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
             Customize the game by selecting an emoji group and a number of
             memory cards.
           </p>
-          <form className="form-wrapper">
+          <form class="flex flex-col gap-6 bg-neutral-900 text-teal-50 rounded-lg gap-8 text-xl p-4">
             <Select handleChange={handleChange} />
             <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
           </form>

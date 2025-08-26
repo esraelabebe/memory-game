@@ -1,5 +1,6 @@
 import { data } from "../data/data";
 import Option from "./Option";
+import "./Select.css";
 
 function Select({ handleChange }) {
   const selectEl = Object.entries(data).map(([ key, value ]) => (
