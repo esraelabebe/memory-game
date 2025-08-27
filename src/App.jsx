@@ -151,7 +151,7 @@ function App() {
   }
 
   return (
-    <main class="flex flex-col items-center gap-9 min-h-screen pt-10">
+    <main class="flex flex-col items-center gap-9 min-h-screen pt-9">
       <div class="flex gap-6 items-center">
         <img
           src="/assets/Memory-Game-Logo.png"
