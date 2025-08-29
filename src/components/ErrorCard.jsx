@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import RegularButton from "./RegularButton";
-import "./GameOverErrorCard.css";
+import "./ErrorCard.css";
 
 function ErrorCard({ handleClick }) {
   const divRef = useRef(null);
