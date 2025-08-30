@@ -44,9 +44,9 @@ function GameOver({
     >
       <p class="text-2xl">You've matched all the memory cards! 🎉</p>
       <p>Built by Esrael Abebe</p>
-      <div class="wrapper--score">
+      <div className="wrapper--score">
         {/** Show timer and best score after all cards are matched */}
-        <div className="flex gap-3 font-bold text-pink-500">
+        <div class="flex gap-3 font-bold text-pink-500">
           <label id="time">Time:</label>
           <Timer
             id="time"
