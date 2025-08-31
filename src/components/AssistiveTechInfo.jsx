@@ -4,7 +4,7 @@ function AssistiveTechInfo({ emojisData, matchedCards }) {
    to hide the code visually and keep it accessible to assistive technologies
    ============================*/
     <section
-      class="absolute! w-px! h-px! m-[-1px]! p-0! overflow-hidden! whitespace-nowrap! border-0! [clip:rect(1px,1px,1px,1px)]! [clip-path:inset(50%)]! [-webkit-clip-path:inset(50%)]!"
+      className="absolute! w-px! h-px! m-[-1px]! p-0! overflow-hidden! whitespace-nowrap! border-0! [clip:rect(1px,1px,1px,1px)]! [clip-path:inset(50%)]! [-webkit-clip-path:inset(50%)]!"
       aria-live="polite"
       aria-atomic="true"
     >

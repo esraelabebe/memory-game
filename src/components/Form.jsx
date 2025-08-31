@@ -10,7 +10,7 @@ function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
   }, [isFirstRender]);
 
   return (
-    <div class="flex flex-col gap-6 text-start m-7" ref={divRef} tabIndex={-1}>
+    <div className="flex flex-col gap-6 text-start m-7" ref={divRef} tabIndex={-1}>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -19,7 +19,7 @@ function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
             Customize the game by selecting an emoji group and a number of
             memory cards.
           </p>
-          <form class="flex flex-col bg-neutral-900 text-teal-50 rounded-lg gap-8 text-xl p-4">
+          <form className="flex flex-col bg-neutral-900 text-teal-50 rounded-lg gap-8 text-xl p-4">
             <Select handleChange={handleChange} />
             <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
           </form>
