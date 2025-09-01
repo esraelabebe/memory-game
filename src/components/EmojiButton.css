@@ -1,24 +1,7 @@
-.card-container {
-    padding-left: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1rem;
-    width: 100%;
-    margin: 30px;
-}
-.card-item {
-    list-style: none;
-}
 /* Animated memory card */
-.card-item--selected,
-.card-item--matched,
 .btn--emoji__back--selected,
 .btn--emoji__back--matched {
   transform: rotateY(180deg);
-}
-.card-item--selected {
-    transition: .6s;
-    transform-style: preserve-3d;
 }
 /* Emoji button style */
 .btn {
@@ -43,7 +26,7 @@
 .btn--emoji__back--selected {
     backface-visibility: hidden;
 }
-.card-item--selected .btn--emoji__back--selected {
+.btn--emoji__back--selected {
     border-color: var(--on-focus);
     box-shadow: 0 0 5px 1px var(--dark-primary);
 }
