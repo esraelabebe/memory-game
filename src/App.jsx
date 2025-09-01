@@ -60,6 +60,9 @@ function App() {
   const startGame = async (e, newFormDataNumber) => {
     e.preventDefault();
     try {
+
+      throw new Error("I am now throwing a brand new error.")
+
       setIsLoading(true);
       const response = await getEmojisData();
       setIsLoading(false);

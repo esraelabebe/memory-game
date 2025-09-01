@@ -7,12 +7,16 @@ function ErrorCard({ handleClick }) {
 
   useEffect(() => {
     divRef.current.focus();
-  },[]);
+  }, []);
 
   return (
-    <div className="wrapper wrapper--accent" ref={divRef} tabIndex={-1}>
-      <p className="p--large">Sorry, there was an error.</p>
-      <p className="p--regular">
+    <div
+      className="flex flex-col items-center gap-6 bg-neutral-900 text-teal-50 text-center rounded-lg wrapper--accent py-8 px-12 border border-sky-100 shadow-[0_0_3px_1px_white]"
+      ref={divRef}
+      tabIndex={-1}
+    >
+      <p className="text-2xl">Sorry, there was an error.</p>
+      <p className="text-lg">
         Please come back later or click the button below to try restarting the
         game.
       </p>
