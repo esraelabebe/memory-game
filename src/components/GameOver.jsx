@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from "react";
-import "./GameOverErrorCard.css";
 import RegularButton from "./RegularButton";
 import Level from "./Level";
 import Timer from "./Timer";
@@ -38,12 +37,16 @@ function GameOver({
   }, []);
 
   return (
-    <div className="wrapper wrapper--accent" ref={divRef} tabIndex={-1}>
-      <p className="p--large">You've matched all the memory cards! 🎉</p>
+    <div
+      className="flex flex-col items-center text-center gap-6 bg-neutral-900 text-teal-50 rounded-2xl py-8 px-12 border border-sky-100 m-7 shadow-[0_0_3px_1px_white]"
+      ref={divRef}
+      tabIndex={-1}
+    >
+      <p className="text-2xl">You've matched all the memory cards! 🎉</p>
       <p>Built by Esrael Abebe</p>
       <div className="wrapper--score">
         {/** Show timer and best score after all cards are matched */}
-        <div className="score">
+        <div className="flex gap-3 font-bold text-pink-500">
           <label id="time">Time:</label>
           <Timer
             id="time"
@@ -52,12 +55,12 @@ function GameOver({
             bestScore={bestScore}
           />
         </div>
-        <div className="score">
+        <div className="flex gap-3 font-bold text-pink-500">
           <label id="best-score">Personal best:</label>
           <p>{formatTime(bestScore)}</p>
         </div>
       </div>
-      <div className="play--button">
+      <div className="flex gap-5 flex-col sm:flex-row sm:gap-12">
         <Level
           formData={formData}
           setFormData={setFormData}

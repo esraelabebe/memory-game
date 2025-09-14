@@ -1,8 +1,13 @@
-import "./AssistiveTechInfo.css";
-
 function AssistiveTechInfo({ emojisData, matchedCards }) {
   return (
-    <section className="sr-only" aria-live="polite" aria-atomic="true">
+    /* Screen reader only ===========================
+   to hide the code visually and keep it accessible to assistive technologies
+   ============================*/
+    <section
+      className="absolute! w-px! h-px! m-[-1px]! p-0! overflow-hidden! whitespace-nowrap! border-0! [clip:rect(1px,1px,1px,1px)]! [clip-path:inset(50%)]! [-webkit-clip-path:inset(50%)]!"
+      aria-live="polite"
+      aria-atomic="true"
+    >
       <h2>Game Status</h2>
       <p>Number of matched cards: {matchedCards.length / 2}</p>
       <p>

@@ -1,4 +1,4 @@
-import "./MemoryCardEmojiButton.css";
+import "./EmojiButton.css";
 
 function EmojiButton({
   emojiElement,
