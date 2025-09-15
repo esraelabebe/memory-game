@@ -17,9 +17,9 @@ function MemoryCard({ handleClick, data, selectedCards, matchedCards }) {
      * conditionally assign card elements a value depending on whether a card is selected, matched or neither.
      */
     const cardStyle = matchedCardEntry
-      ? "card-item--matched transform rotate-[rotateY(180deg)]"
+      ? "rotate-y-180"
       : selectedCardEntry
-      ? "card-item--selected transform rotate-[rotateY(180deg)] transition duration-[600ms] transform-3d border-4 border-pink-950 shadow-[0_0_5px_1px_gray]"
+      ? "rotate-y-180 transition duration-[600ms] transform-3d rounded-2xl border-pink-950 shadow-[0_0_5px_1px_gray]"
       : "";
 
     return (

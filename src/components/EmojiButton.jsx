@@ -1,5 +1,3 @@
-import "./EmojiButton.css";
-
 function EmojiButton({
   emojiElement,
   index,
@@ -14,10 +12,10 @@ function EmojiButton({
    * conditionally add button style depending on whether a card is selected, matched or neither.
    */
   const btnStyle = matchedCardEntry
-    ? "btn--emoji__back--matched"
+    ? "rotate-y-180 [backface-visibility:unset] bg-zinc-700 border-1 border-zinc-600 cursor-not-allowed"
     : selectedCardEntry
-    ? "btn--emoji__back--selected"
-    : "btn--emoji__front";
+    ? "rotate-y-180 backface-hidden border-pink-950 shadow-[0_0_5px_1px_gray]"
+    : "hover:border-pink-950 hover:shadow-[0_0_5px_1px_gray] focus:border-pink-950 focus:shadow-[0_0_5px_1px_gray] backface-hidden border-sky-100 cursor-pointer";
 
   /**
    * conditionally an aria-label value depending on whether the card is matched, selected or neither.
@@ -30,7 +28,7 @@ function EmojiButton({
 
   return (
     <button
-      className={`btn btn--emoji ${btnStyle}`}
+      className={`bg-neutral-900 rounded-2xl text-teal-50 w-full h-25 text-[4rem] border-3 ${btnStyle}`}
       // if the user clicked the same card twice do nothing if not call "turnCard" function.
       onClick={selectedCardEntry ? null : handleClick}
       /* To improve the user experience disable the emoji button whenever a memory card is matched.
