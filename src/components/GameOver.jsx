@@ -13,6 +13,7 @@ function GameOver({
   time,
   setTime,
 }) {
+
   const [bestScore, setBestScore] = useState(() => {
     const stored = localStorage.getItem("BestScoreData");
     return stored ? JSON.parse(stored) : null;

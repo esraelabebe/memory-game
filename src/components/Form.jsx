@@ -10,7 +10,7 @@ function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
   }, [isFirstRender]);
 
   return (
-    <div className="flex flex-col gap-6 text-start m-7" ref={divRef} tabIndex={-1}>
+    <div className="flex flex-col gap-4 text-start m-4" ref={divRef} tabIndex={-1}>
       {loading ? (
         <p>Loading...</p>
       ) : (
