@@ -13,19 +13,31 @@ function GameOver({
   time,
   setTime,
 }) {
+  const [bestScore, setBestScore] = useState(null);
 
-  const [bestScore, setBestScore] = useState(() => {
-    const stored = localStorage.getItem("BestScoreData");
-    return stored ? JSON.parse(stored) : null;
-  });
+  // Helper: generate dynamic key for localStorage
+  const getStorageKey = (formData) => `bestScoreLevel${formData.number}`;
 
+  // Load best score for current level when formData changes
   useEffect(() => {
-    if (typeof time === "number" && (bestScore === null || time < bestScore)) {
+    const key = getStorageKey(formData);
+    const stored = localStorage.getItem(key);
+    setBestScore(stored ? JSON.parse(stored) : null);
+  }, [formData]); // Dependency array ensures this runs when 'data' changes.
+
+  // Save new best score if current time is better
+  useEffect(() => {
+    if (typeof time !== "number") return;
+
+    const key = getStorageKey(formData);
+    const stored = localStorage.getItem(key);
+    const storedBest = stored ? JSON.parse(stored) : null;
+
+    if (storedBest === null || time < storedBest) {
+      localStorage.setItem(key, JSON.stringify(time));
       setBestScore(time);
-      // Store data in localStorage whenever 'data' changes
-      localStorage.setItem("BestScoreData", JSON.stringify(time));
     }
-  }, [time, bestScore]); // Dependency array ensures this runs when 'data' changes
+  }, [time, formData]);
 
   /**
    * Add focus to this new DOM node and prompt screen readers to read its content
@@ -57,7 +69,7 @@ function GameOver({
           />
         </div>
         <div className="flex gap-3 font-bold text-pink-500">
-          <label id="best-score">Personal best:</label>
+          <label id="best-score">Personal best for current level:</label>
           <p>{formatTime(bestScore)}</p>
         </div>
       </div>
