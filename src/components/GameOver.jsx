@@ -18,26 +18,20 @@ function GameOver({
   // Helper: generate dynamic key for localStorage
   const getStorageKey = (formData) => `bestScoreLevel${formData.number}`;
 
-  // Load best score for current level when formData changes
-  useEffect(() => {
-    const key = getStorageKey(formData);
-    const stored = localStorage.getItem(key);
-    setBestScore(stored ? JSON.parse(stored) : null);
-  }, [formData]); // Dependency array ensures this runs when 'data' changes.
-
   // Save new best score if current time is better
   useEffect(() => {
-    if (typeof time !== "number") return;
-
     const key = getStorageKey(formData);
     const stored = localStorage.getItem(key);
     const storedBest = stored ? JSON.parse(stored) : null;
+    setBestScore(storedBest);
+
+    if (typeof time !== "number") return;
 
     if (storedBest === null || time < storedBest) {
       localStorage.setItem(key, JSON.stringify(time));
       setBestScore(time);
     }
-  }, [time, formData]);
+  }, [time, formData]); // Dependency array ensures this runs when 'data' changes.
 
   /**
    * Add focus to this new DOM node and prompt screen readers to read its content
