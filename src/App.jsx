@@ -169,6 +169,7 @@ function App() {
           handleChange={handleFormChange}
           isFirstRender={isFirstRender}
           loading={isLoading}
+          formData={formData}
         />
       )}
       {isGameOn && !areAllCardsMatched && (

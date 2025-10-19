@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import RegularButton from "./RegularButton";
 import Select from "./Select";
 
-function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
+function Form({ handleSubmit, handleChange, isFirstRender, loading, formData }) {
   const divRef = useRef(null);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function Form({ handleSubmit, handleChange, isFirstRender, loading }) {
             memory cards.
           </p>
           <form className="flex flex-col bg-neutral-900 text-teal-50 rounded-lg gap-8 text-xl p-4">
-            <Select handleChange={handleChange} />
+            <Select handleChange={handleChange} formData={formData}/>
             <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
           </form>
         </>
