@@ -43,6 +43,17 @@ function GameOver({
     divRef.current.focus();
   }, []);
 
+  const level =
+    formData.number === 10
+      ? "Level-1"
+      : formData.number === 20
+      ? "Level-2"
+      : formData.number === 30
+      ? "Level-3"
+      : formData.number === 40
+      ? "Level-4"
+      : "Level-5";
+
   return (
     <div
       className="flex flex-col items-center text-center gap-6 bg-neutral-900 text-teal-50 rounded-2xl py-8 px-12 border border-sky-100 m-7 shadow-[0_0_3px_1px_white]"
@@ -63,7 +74,7 @@ function GameOver({
           />
         </div>
         <div className="flex gap-3 font-bold text-pink-500">
-          <label id="best-score">Personal best for current level:</label>
+          <label id="best-score">{`Personal best (${level}):`}</label>
           <p>{formatTime(bestScore)}</p>
         </div>
       </div>
