@@ -43,16 +43,15 @@ function GameOver({
     divRef.current.focus();
   }, []);
 
-  const level =
-    formData.number === 10
-      ? "Level-1"
-      : formData.number === 20
-      ? "Level-2"
-      : formData.number === 30
-      ? "Level-3"
-      : formData.number === 40
-      ? "Level-4"
-      : "Level-5";
+  const levelMap = {
+    10: "Level-1",
+    20: "Level-2",
+    30: "Level-3",
+    40: "Level-4",
+    50: "Level-5",
+  };
+
+  const level = levelMap[formData.number];
 
   return (
     <div
@@ -65,7 +64,7 @@ function GameOver({
       <div className="wrapper--score">
         {/** Show timer and best score after all cards are matched */}
         <div className="flex gap-3 font-bold text-pink-500">
-          <label id="time">Time:</label>
+          <label id="time" htmlFor="time">Time:</label>
           <Timer
             id="time"
             time={time}
@@ -74,8 +73,8 @@ function GameOver({
           />
         </div>
         <div className="flex gap-3 font-bold text-pink-500">
-          <label id="best-score">{`Personal best (${level}):`}</label>
-          <p>{formatTime(bestScore)}</p>
+          <label id="best-score" htmlFor="bestScore">{`Personal best (${level}):`}</label>
+          <p id="bestScore">{formatTime(bestScore)}</p>
         </div>
       </div>
       <div className="flex gap-5 flex-col sm:flex-row sm:gap-12">
