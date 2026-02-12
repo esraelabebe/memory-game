@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Define the shape of the props
 interface AssistiveTechInfoProps {
   // Assuming emojisData is an array of objects or strings
@@ -8,7 +6,7 @@ interface AssistiveTechInfoProps {
   matchedCards: any[];
 }
 
-const AssistiveTechInfo: React.FC<AssistiveTechInfoProps> = ({ emojisData, matchedCards }) =>  {
+const AssistiveTechInfo = ({ emojisData, matchedCards } :AssistiveTechInfoProps) =>  {
   return (
     /* Screen reader only ===========================
    to hide the code visually and keep it accessible to assistive technologies
