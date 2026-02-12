@@ -1,4 +1,23 @@
-const apiData = [
+export interface EmojiData {
+  emoji: string;
+  hexcode: string;
+  group: string;
+  subgroup: string;
+  annotation: string;
+  tags: string[];
+  shortcodes: string[];
+  emoticons: string[];
+  directional: boolean;
+  variation: boolean;
+  variationBase: string | null;
+  unicode: number;
+  order: number;
+  skintone: number | null;
+  skintoneCombination: string | null;
+  skintoneBase: string | null;
+}
+
+const apiData: EmojiData[] = [
   {
     emoji: "😀",
     hexcode: "1f600",
@@ -27459,7 +27478,7 @@ const apiData = [
   },
 ];
 
-export const getEmojisData = () => {
+export const getEmojisData = (): Promise<EmojiData[]> => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(apiData);
