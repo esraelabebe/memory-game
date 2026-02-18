@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getEmojisData } from "./components/api";
+import { EmojiData, getEmojisData } from "./components/api";
 import AssistiveTechInfo from "./components/AssistiveTechInfo";
 import Form from "./components/Form";
 import GameOver from "./components/GameOver";
@@ -7,25 +7,34 @@ import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
 import Timer from "./components/Timer";
 
+interface FormData {
+  group: string;
+  number: number;
+}
+interface SelectedCard {
+  emojiElement: string;
+  index: number;
+}
+
 function App() {
-  const initialFormData = {
+  const initialFormData: FormData = {
     group: "animals-nature",
     number: 10,
   };
   const [isFirstRender, setIsFirstRender] = useState(true);
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isGameOn, setIsGameOn] = useState(false);
-  const [emojisData, setEmojisData] = useState([]);
+  const [emojisData, setEmojisData] = useState<EmojiData[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   // selectedCards track which card is selected by the user
-  const [selectedCards, setSelectedCards] = useState([]);
-  const [matchedCards, setMatchedCards] = useState([]);
+  const [selectedCards, setSelectedCards] = useState<SelectedCard[]>([]);
+  const [matchedCards, setMatchedCards] = useState<SelectedCard[]>([]);
   const [areAllCardsMatched, setAreAllCardsMatched] = useState(false);
   const [isError, setIsError] = useState(false);
   const [time, setTime] = useState(0);
 
   // Detect for matching cards and add them to "matchedCards" state variable.
-  const addMatchedCards = (selectedCardsList) => {
+  const addMatchedCards = (selectedCardsList: SelectedCard[]) => {
     if (
       selectedCardsList.length === 2 &&
       selectedCardsList[0].emojiElement === selectedCardsList[1].emojiElement
@@ -36,7 +45,7 @@ function App() {
     }
   };
 
-  const gameOver = (emojisDataArray, matchedCardsArray) => {
+  const gameOver = (emojisDataArray: EmojiData[], matchedCardsArray: SelectedCard[]) => {
     /**
      * To stop the if statement from evaluating to true when the app renders check if there is an emojisData and is being rendered
      * as memory cards.
@@ -50,14 +59,14 @@ function App() {
     }
   };
 
-  function handleFormChange(e) {
+  function handleFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
     }));
   }
 
-  const startGame = async (e, newFormDataNumber) => {
+  const startGame = async (e: React.MouseEvent<HTMLButtonElement>, newFormDataNumber: number) => {
     e.preventDefault();
     try {
       setIsLoading(true);
@@ -85,8 +94,11 @@ function App() {
    * to the length of the "data" array push these numbers to randomIndicesArray variable and returns an array containing the
    * five randomly selected values.
    */
-  function getRandomIndices(response, newFormDataNumber) {
-    const randomIndicesArray = [];
+  function getRandomIndices(
+    response: EmojiData[],
+    newFormDataNumber: number,
+  ): number[] {
+    const randomIndicesArray: number[] = [];
     for (let i = 0; i < (newFormDataNumber ?? formData.number) / 2; i++) {
       const randomNum = Math.floor(Math.random() * response.length);
       if (!randomIndicesArray.includes(randomNum)) {
@@ -98,7 +110,10 @@ function App() {
     return randomIndicesArray;
   }
 
-  function getDataSlice(response, newFormDataNumber) {
+  function getDataSlice(
+    response: EmojiData[],
+    newFormDataNumber: number,
+  ): EmojiData[] {
     const randomIndices = getRandomIndices(response, newFormDataNumber);
 
     const dataSlice = randomIndices.map((index) => response[index]);
@@ -110,7 +125,7 @@ function App() {
    * its parameter. It then duplicates each unique emoji's data object shuffles the array using the Fisher-Yates algorithm and
    * returns the shuffled array.
    */
-  function getEmojisArray(data) {
+  function getEmojisArray(data: EmojiData[]): EmojiData[] {
     const pairedEmojisArray = [...data, ...data];
 
     for (let i = pairedEmojisArray.length - 1; i > 0; i--) {
@@ -125,9 +140,9 @@ function App() {
   /**
    * what should happen when a card is clicked.
    */
-  function turnCard(emojiElement, index) {
+  function turnCard(emojiElement: string, index: number) {
     if (selectedCards.length < 2) {
-      const newSelectedCards = [...selectedCards, { emojiElement, index }];
+      const newSelectedCards: SelectedCard[] = [...selectedCards, { emojiElement, index }];
       setSelectedCards(newSelectedCards);
       addMatchedCards(newSelectedCards);
     } else {

@@ -1,4 +1,4 @@
-interface EmojiData {
+export interface EmojiData {
   emoji: string;
   hexcode: string;
   group: string;
