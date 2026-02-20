@@ -1,17 +1,16 @@
 import { useRef, useEffect } from "react";
-import RegularButton from "./RegularButton";
+import RegularButton, { HandleSubmit } from "./RegularButton";
 import Select from "./Select";
+import { HandleChange } from "../App";
 
-interface FormData {
+
+export interface FormData {
   group: string;
   number: number;
 }
 interface FormProps {
-  handleSubmit: (
-    e: React.MouseEvent<HTMLButtonElement>,
-    newFormDataNumber: number,
-  ) => void;
-  handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleSubmit: HandleSubmit;
+  handleChange: HandleChange;
   isFirstRender: boolean;
   loading: boolean;
   formData: FormData;
