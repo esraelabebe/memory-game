@@ -1,9 +1,13 @@
+import { EmojiData } from "./api";
+
 // Define the shape of the props
+interface SelectedCard {
+  emojiElement: string;
+  index: number;
+}
 interface AssistiveTechInfoProps {
-  // Assuming emojisData is an array of objects or strings
-  emojisData: any[];
-  // Assuming matchedCards contains IDs or strings of matched cards
-  matchedCards: any[];
+  emojisData: EmojiData[];
+  matchedCards: SelectedCard[];
 }
 
 const AssistiveTechInfo = ({ emojisData, matchedCards } :AssistiveTechInfoProps) =>  {
