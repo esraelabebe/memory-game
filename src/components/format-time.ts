@@ -1,4 +1,4 @@
-export const formatTime = (sec) => {
+export const formatTime = (sec: number): string => {
   const hours = Math.floor(sec / 3600);
   const minutes = Math.floor((sec % 3600) / 60) % 60;
   const second = sec % 60;
