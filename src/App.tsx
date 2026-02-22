@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { EmojiData, getEmojisData } from "./components/api";
 import AssistiveTechInfo from "./components/AssistiveTechInfo";
-import Form, { FormData } from "./components/Form";
+import Form, { FormData }from "./components/Form";
 import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
@@ -208,7 +208,6 @@ function App() {
       )}
       {areAllCardsMatched && (
         <GameOver
-          handleClick={resetGame}
           formData={formData}
           setFormData={setFormData}
           startGame={startGame}

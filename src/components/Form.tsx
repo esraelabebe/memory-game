@@ -3,10 +3,9 @@ import RegularButton, { HandleSubmit } from "./RegularButton";
 import Select from "./Select";
 import { HandleChange } from "../App";
 
-
 export interface FormData {
   group: string;
-  number: number;
+  number: 10 | 20 | 30 | 40 | 50;
 }
 interface FormProps {
   handleSubmit: HandleSubmit;
