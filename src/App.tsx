@@ -1,20 +1,19 @@
 import { useState } from "react";
 import { EmojiData, getEmojisData } from "./components/api";
 import AssistiveTechInfo from "./components/AssistiveTechInfo";
-import Form from "./components/Form";
+import Form, { FormData }from "./components/Form";
 import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
 import Timer from "./components/Timer";
+import { HandleSubmit } from "./components/RegularButton";
 
-interface FormData {
-  group: string;
-  number: number;
-}
 interface SelectedCard {
   emojiElement: string;
   index: number;
 }
+
+export type HandleChange = (e: React.ChangeEvent<HTMLSelectElement>) => void;
 
 function App() {
   const initialFormData: FormData = {
@@ -45,7 +44,10 @@ function App() {
     }
   };
 
-  const gameOver = (emojisDataArray: EmojiData[], matchedCardsArray: SelectedCard[]) => {
+  const gameOver = (
+    emojisDataArray: EmojiData[],
+    matchedCardsArray: SelectedCard[],
+  ) => {
     /**
      * To stop the if statement from evaluating to true when the app renders check if there is an emojisData and is being rendered
      * as memory cards.
@@ -59,14 +61,14 @@ function App() {
     }
   };
 
-  function handleFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
+  function handleFormChange (e: React.ChangeEvent<HTMLSelectElement>) {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
     }));
   }
 
-  const startGame = async (e: React.MouseEvent<HTMLButtonElement>, newFormDataNumber: number) => {
+  const startGame: HandleSubmit = async (e, newFormDataNumber) => {
     e.preventDefault();
     try {
       setIsLoading(true);
@@ -96,7 +98,7 @@ function App() {
    */
   function getRandomIndices(
     response: EmojiData[],
-    newFormDataNumber: number,
+    newFormDataNumber?: number,
   ): number[] {
     const randomIndicesArray: number[] = [];
     for (let i = 0; i < (newFormDataNumber ?? formData.number) / 2; i++) {
@@ -112,7 +114,7 @@ function App() {
 
   function getDataSlice(
     response: EmojiData[],
-    newFormDataNumber: number,
+    newFormDataNumber?: number,
   ): EmojiData[] {
     const randomIndices = getRandomIndices(response, newFormDataNumber);
 
@@ -142,7 +144,10 @@ function App() {
    */
   function turnCard(emojiElement: string, index: number) {
     if (selectedCards.length < 2) {
-      const newSelectedCards: SelectedCard[] = [...selectedCards, { emojiElement, index }];
+      const newSelectedCards: SelectedCard[] = [
+        ...selectedCards,
+        { emojiElement, index },
+      ];
       setSelectedCards(newSelectedCards);
       addMatchedCards(newSelectedCards);
     } else {
@@ -203,7 +208,6 @@ function App() {
       )}
       {areAllCardsMatched && (
         <GameOver
-          handleClick={resetGame}
           formData={formData}
           setFormData={setFormData}
           startGame={startGame}
