@@ -25,14 +25,20 @@ function MemoryCard({  data, handleClick, selectedCards, matchedCards }: MemoryC
     /**
      * conditionally assign card elements a value depending on whether a card is selected, matched or neither.
      */
-    const cardStyle = matchedCardEntry
-      ? "rotate-y-180"
-      : selectedCardEntry
-      ? "rotate-y-180 transition duration-[600ms] transform-3d rounded-2xl border-pink-950 shadow-[0_0_5px_1px_gray]"
-      : "";
+
+  const assignCardElementStyleBaseOnCardEntryStatus = (matchedCardEntry?: SelectedCard, selectedCardEntry?: SelectedCard) => {
+    if(matchedCardEntry){
+      return "rotate-y-180";
+    } else if(selectedCardEntry) {
+      return "rotate-y-180 transition duration-[600ms] transform-3d rounded-2xl border-pink-950 shadow-[0_0_5px_1px_gray]";
+    } else {
+      return "";
+    }
+  }
+  const assignCardElementStyle = assignCardElementStyleBaseOnCardEntryStatus(matchedCardEntry, selectedCardEntry);
 
     return (
-      <li key={index} className={`list-none ${cardStyle}`}>
+      <li key={index} className={`list-none ${assignCardElementStyle}`}>
         <EmojiButton
           emojiElement={emojiElement}
           index={index}
