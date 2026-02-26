@@ -8,7 +8,7 @@ import ErrorCard from "./components/ErrorCard";
 import Timer from "./components/Timer";
 import { HandleSubmit } from "./components/RegularButton";
 
-interface SelectedCard {
+export interface SelectedCard {
   emojiElement: string;
   index: number;
 }

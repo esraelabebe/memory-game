@@ -1,6 +1,15 @@
+import { SelectedCard } from "../App";
+import { EmojiData } from "./api";
 import EmojiButton from "./EmojiButton";
 
-function MemoryCard({ handleClick, data, selectedCards, matchedCards }) {
+interface MemoryCardProps {
+  data: EmojiData[];
+  handleClick:(emojiElement: string, index: number) => void;
+  selectedCards: SelectedCard[];
+  matchedCards: SelectedCard[];
+}
+
+function MemoryCard({  data, handleClick, selectedCards, matchedCards }: MemoryCardProps) {
   if (!data || data?.length === 0) {
     return <p>Data not available at the moment. Please try again later.</p>;
   }

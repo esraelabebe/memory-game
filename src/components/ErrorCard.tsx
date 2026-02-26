@@ -1,11 +1,14 @@
 import { useRef, useEffect } from "react";
 import RegularButton from "./RegularButton";
 
-function ErrorCard({ handleClick }) {
-  const divRef = useRef(null);
+interface ErrorCardProps {
+  handleClick: () => void;
+}
+function ErrorCard({ handleClick }: ErrorCardProps) {
+  const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    divRef.current.focus();
+    divRef.current?.focus();
   }, []);
 
   return (

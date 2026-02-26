@@ -1,4 +1,14 @@
-const data = {
+export interface DataItem {
+  name?: string; // Optional because 'number' items don't have names
+  value: string;
+}
+
+interface Data {
+  group: DataItem[];
+  number: DataItem[];
+}
+
+const data: Data  = {
   group: [
     {
       name: "Animals and nature",

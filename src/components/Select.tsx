@@ -1,7 +1,14 @@
 import { data } from "../data/data";
 import Option from "./Option";
+import { HandleChange } from "../App";
+import { FormData } from "./Form";
 
-function Select({ handleChange, formData }) {
+interface SelectProps{
+  handleChange: HandleChange;
+  formData: FormData;
+}
+
+function Select({ handleChange, formData }: SelectProps) {
   const selectEl = Object.entries(data).map(([key, value]) => (
     <div key={key} className="flex flex-col gap-2">
       <label htmlFor={key}>Select an emoji {key}</label>
