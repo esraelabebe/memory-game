@@ -30,7 +30,7 @@ function MemoryCard({  data, handleClick, selectedCards, matchedCards }: MemoryC
     if(matchedCardEntry){
       return "rotate-y-180";
     } else if(selectedCardEntry) {
-      return "rotate-y-180 transition duration-[600ms] transform-3d rounded-2xl border-pink-950 shadow-[0_0_5px_1px_gray]";
+      return "rotate-y-180 transition duration-[600ms] transform-3d rounded-2xl border-pink-950";
     } else {
       return "";
     }

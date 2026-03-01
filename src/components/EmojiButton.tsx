@@ -35,13 +35,13 @@ function EmojiButton({
     } else if (selectedCardEntry) {
       return {
         buttonStyle:
-          "rotate-y-180 backface-hidden border-pink-950 shadow-[0_0_5px_1px_gray]",
+          "rotate-y-180 backface-hidden border-pink-950",
         buttonAriaLabel: `${emojiElement.annotation}. Not matched yet.`,
       };
     } else {
       return {
         buttonStyle:
-          "hover:border-pink-950 hover:shadow-[0_0_5px_1px_gray] focus:border-pink-950 focus:shadow-[0_0_5px_1px_gray] backface-hidden border-sky-100 cursor-pointer",
+          "hover:border-pink-950  focus:border-pink-950  backface-hidden border-sky-100 cursor-pointer",
         buttonAriaLabel: "Card upside down",
       };
     }
@@ -60,7 +60,7 @@ function EmojiButton({
 
   return (
     <button
-      className={`bg-neutral-900 rounded-2xl text-teal-50 w-full h-25 text-[4rem] border-3 ${mappedStyleAndAriaLabel.buttonStyle}`}
+      className={`bg-neutral-900 rounded-2xl text-teal-50 w-full h-25 text-[5rem] border-4 ${mappedStyleAndAriaLabel.buttonStyle}`}
       // if the user clicked the same card twice do nothing if not call "turnCard" function.
       onClick={onEmojiCardClick}
       /* To improve the user experience disable the emoji button whenever a memory card is matched.

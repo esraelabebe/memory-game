@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { EmojiData, getEmojisData } from "./components/api";
 import AssistiveTechInfo from "./components/AssistiveTechInfo";
-import Form, { FormData }from "./components/Form";
+import Form, { FormData } from "./components/Form";
 import GameOver from "./components/GameOver";
 import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
@@ -61,7 +61,7 @@ function App() {
     }
   };
 
-  function handleFormChange (e: React.ChangeEvent<HTMLSelectElement>) {
+  function handleFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [e.target.name]: e.target.value,
@@ -172,16 +172,22 @@ function App() {
 
   return (
     <main className="flex flex-col items-center gap-9 min-h-screen pt-9 m-4">
-      <div className="flex gap-6 items-center">
-        <img
-          src="/assets/Memory-Game-Logo.png"
-          alt="logo"
-          width="70px"
-          height="70px"
-        />
-        <h1 className="text-teal-50 text-3xl sm:text-5xl tracking-widest m-0">
-          Memory Game
-        </h1>
+      <div>
+        <button
+          onClick={resetGame}
+          className="curser-pointer hover:opacity-80 transition-opacity flex gap-6 items-center"
+          aria-label="Back to hame"
+        >
+          <img
+            src="/assets/Memory-Game-Logo.png"
+            alt="logo"
+            width="70px"
+            height="70px"
+          />
+          <h1 className="text-teal-50 text-3xl sm:text-5xl tracking-widest m-0">
+            Memory Game
+          </h1>
+        </button>
       </div>
       {!isGameOn && !isError && (
         <Form
