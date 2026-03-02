@@ -44,7 +44,7 @@ function Form({
             Customize the game by selecting an emoji group and a number of
             memory cards.
           </p>
-          <form className="flex flex-col bg-neutral-900 text-teal-50 rounded-lg gap-8 text-xl p-4">
+          <form className="flex flex-col bg-zinc-950 text-teal-50 rounded-lg gap-8 text-xl p-10 border border-zin-950 shadow-[0_0_4px_1px_gray]">
             <Select handleChange={handleChange} formData={formData} />
             <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
           </form>

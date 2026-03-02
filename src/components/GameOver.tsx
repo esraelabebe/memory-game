@@ -66,7 +66,7 @@ function GameOver({
 
   return (
     <div
-      className="flex flex-col items-center text-center gap-6 bg-neutral-900 text-teal-50 rounded-2xl py-8 px-12 border border-sky-100 m-7 shadow-[0_0_3px_1px_white]"
+      className="flex flex-col items-center text-center gap-6 bg-zinc-950 text-teal-50 rounded-2xl py-8 px-12 border border-zin-800 m-7 shadow-[0_0_4px_1px_gray]"
       ref={divRef}
       tabIndex={-1}
     >
@@ -74,11 +74,11 @@ function GameOver({
       <p>Built by Esrael Abebe</p>
       <div className="wrapper--score">
         {/** Show timer and best score after all cards are matched */}
-        <div className="flex gap-3 font-bold text-pink-500">
+        <div className="flex gap-3 font-bold text-pink-600">
           <label htmlFor="time">Time:</label>
           <Timer id="time" time={time} setTime={setTime} />
         </div>
-        <div className="flex gap-3 font-bold text-pink-500">
+        <div className="flex gap-3 font-bold text-pink-600">
           <label
             id="best-score"
             htmlFor="bestScore"
