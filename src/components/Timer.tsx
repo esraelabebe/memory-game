@@ -7,6 +7,7 @@ interface TimerProps {
   time: number;
   setTime: React.Dispatch<React.SetStateAction<number>>;
   id?: string;
+  showResetConfirm?: boolean;
 }
 
 function Timer({ isGameOn, areAllCardsMatched, time, setTime, id, showResetConfirm }: TimerProps) {
