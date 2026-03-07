@@ -1,5 +1,14 @@
 import { AlertDialog } from "@base-ui/react/alert-dialog";
 
+interface AlertDialogToHomePageProps {
+  showResetConfirm: boolean;
+  setShowResetConfirm:  React.Dispatch<React.SetStateAction<boolean>>;
+  resetGame: () => void;
+  handleLogoClick: () => void;
+  isGameOn: boolean;
+  areAllCardsMatched: boolean;
+}
+
 function AlertDialogToHomePage({
   showResetConfirm,
   setShowResetConfirm,
@@ -7,7 +16,7 @@ function AlertDialogToHomePage({
   handleLogoClick,
   isGameOn,
   areAllCardsMatched,
-}) {
+}: AlertDialogToHomePageProps) {
   return (
     <AlertDialog.Root
       open={showResetConfirm}
