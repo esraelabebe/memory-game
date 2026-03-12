@@ -60,7 +60,7 @@ function EmojiButton({
 
   return (
     <button
-      className={`bg-neutral-900 rounded-2xl text-teal-50 w-full h-25 text-[5rem] border-4 ${mappedStyleAndAriaLabel.buttonStyle}`}
+      className={`bg-slate-950 rounded-2xl text-teal-50 w-full h-25 text-[5rem] border-4 ${mappedStyleAndAriaLabel.buttonStyle}`}
       // if the user clicked the same card twice do nothing if not call "turnCard" function.
       onClick={onEmojiCardClick}
       /* To improve the user experience disable the emoji button whenever a memory card is matched.

@@ -7,18 +7,20 @@ interface TimerProps {
   time: number;
   setTime: React.Dispatch<React.SetStateAction<number>>;
   id?: string;
+  showResetConfirm?: boolean;
 }
 
-function Timer({ isGameOn, areAllCardsMatched, time, setTime, id }: TimerProps) {
+function Timer({ isGameOn, areAllCardsMatched, time, setTime, id, showResetConfirm }: TimerProps) {
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
-    if (isGameOn && !areAllCardsMatched) {
+    if (isGameOn && !areAllCardsMatched && !showResetConfirm) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime + 1); // Update every 1sec
       }, 1000);
     }
     return () => clearInterval(interval); // Cleanup on unmount
-  }, [isGameOn, areAllCardsMatched, setTime]);
+  }, [isGameOn, areAllCardsMatched, setTime, showResetConfirm
+  ]);
 
   return (
     <div id={id}>
