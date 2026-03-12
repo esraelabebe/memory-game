@@ -199,7 +199,7 @@ function App() {
           width="70px"
           height="70px"
         />
-        <h1 className="text-teal-50 text-3xl sm:text-4xl tracking-widest m-0">
+        <h1 className="text-teal-50 text-2xl sm:text-4xl tracking-widest m-0">
           Memory Game
         </h1>
       </div>
