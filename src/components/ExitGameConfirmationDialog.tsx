@@ -17,6 +17,9 @@ function ExitGameConfirmationDialog({
   isGameOn,
   areAllCardsMatched,
 }: ExitGameConfirmationDialogProps) {
+  if (!isGameOn || areAllCardsMatched) {
+    return null;
+  }
   return (
     <AlertDialog.Root
       open={showResetConfirm}
@@ -24,14 +27,12 @@ function ExitGameConfirmationDialog({
         setShowResetConfirm(open);
       }}
     >
-      {isGameOn && !areAllCardsMatched && (
         <AlertDialog.Trigger
           onClick={handleLogoClick}
           className="curser-pointer hover:opacity-80 transition-opacity justify-start text-[1.2rem] bg-white/10 p-2 rounded-full shrink-0 size-10 font-bold"
         >
           ⬅
         </AlertDialog.Trigger>
-      )}
       <AlertDialog.Portal>
         <AlertDialog.Backdrop className="fixed inset-0 min-h-dvh bg-black opacity-20 transition-all duration-150 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 dark:opacity-70 supports-[-webkit-touch-callout:none]:absolute" />
         <AlertDialog.Popup className="fixed top-1/2 left-1/2 -mt-8 w-96 max-w-[calc(100vw-3rem)] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-sky-900/50 backdrop-blur-sm border border-white/20 p-6 text-gray-900 outline outline-1 transition-all duration-150 data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0">
