@@ -7,7 +7,7 @@ import MemoryCard from "./components/MemoryCard";
 import ErrorCard from "./components/ErrorCard";
 import Timer from "./components/Timer";
 import { HandleSubmit } from "./components/RegularButton";
-import AlertDialogToHomePage from "./components/AlertDialogGoToHomePage";
+import ExitGameConfirmationDialog from "./components/ExitGameConfirmationDialog";
 
 export interface SelectedCard {
   emojiElement: string;
@@ -158,7 +158,7 @@ function App() {
   }
 
   /**
-   * This function reset the game.
+   * resets the game.
    */
   function resetGame() {
     setIsGameOn(false);
@@ -172,7 +172,7 @@ function App() {
     setIsError(false);
   }
   /**
-   * this function takes the user back to home page when the logo is clicked.
+   * takes the user back to home page when the logo is clicked.
    */
   const handleLogoClick = () => {
     if (isGameOn && !areAllCardsMatched) {
@@ -185,7 +185,7 @@ function App() {
   return (
     <main className="flex flex-col items-center gap-9 min-h-screen pt-9">
       <div className="flex gap-6 items-center">
-          <AlertDialogToHomePage
+          <ExitGameConfirmationDialog
             showResetConfirm={showResetConfirm}
             setShowResetConfirm={setShowResetConfirm}
             resetGame={resetGame}
@@ -199,7 +199,7 @@ function App() {
           width="70px"
           height="70px"
         />
-        <h1 className="text-teal-50 text-3xl sm:text-4xl tracking-widest m-0">
+        <h1 className="text-teal-50 text-2xl sm:text-4xl tracking-widest m-0">
           Memory Game
         </h1>
       </div>
