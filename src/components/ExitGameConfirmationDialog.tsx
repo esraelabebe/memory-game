@@ -1,4 +1,11 @@
-import {  AlertDialog, AlertDialogContent, AlertDialogTrigger, AlertDialogDescription, AlertDialogTitle, AlertDialogCancel, AlertDialogRestart } from  "./alert-dialog"
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogTrigger,
+  AlertDialogDescription,
+  AlertDialogTitle,
+  AlertDialogCancel,
+} from "./alert-dialog";
 
 interface ExitGameConfirmationDialogProps {
   showResetConfirm: boolean;
@@ -27,30 +34,19 @@ function ExitGameConfirmationDialog({
         setShowResetConfirm(open);
       }}
     >
-        <AlertDialogTrigger
-          onClick={handleLogoClick}
-        >
-          ⬅
-        </AlertDialogTrigger>
-        <AlertDialogContent>
-         <AlertDialogTitle>
-            Restart Game?
-          </AlertDialogTitle>
-          <AlertDialogDescription>
-            Are you sure you want to restart? Your current progress will be
-            lost.
-          </AlertDialogDescription>
-          <div className="flex justify-end gap-4">
-            <AlertDialogCancel>
-              Cancel
-            </AlertDialogCancel>
-            <AlertDialogRestart
-              onClick={resetGame}
-            >
-              Restart
-            </AlertDialogRestart>
-          </div>
-          </AlertDialogContent>
+      <AlertDialogTrigger onClick={handleLogoClick}>⬅</AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogTitle>Restart Game?</AlertDialogTitle>
+        <AlertDialogDescription>
+          Are you sure you want to restart? Your current progress will be lost.
+        </AlertDialogDescription>
+        <div className="flex justify-end gap-4">
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogCancel className="text-pink-600" onClick={resetGame}>
+            Restart
+          </AlertDialogCancel>
+        </div>
+      </AlertDialogContent>
     </AlertDialog>
   );
 }

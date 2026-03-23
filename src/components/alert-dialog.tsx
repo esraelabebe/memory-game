@@ -1,4 +1,5 @@
 import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog";
+import { cn } from "./utils";
 
 function AlertDialog({ ...props }: AlertDialogPrimitive.Root.Props) {
   return <AlertDialogPrimitive.Root {...props} />;
@@ -60,18 +61,10 @@ function AlertDialogCancel({
 }: AlertDialogPrimitive.Close.Props) {
   return (
     <AlertDialogPrimitive.Close
-      className="flex h-10 items-center justify-center rounded-md  bg-gray-100 border  border border-sky-950 px-3.5 font-bold text-gray-950 select-none hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100"
-      {...props}
-    />
-  );
-}
-function AlertDialogRestart({
-  className,
-  ...props
-}: AlertDialogPrimitive.Close.Props) {
-  return (
-    <AlertDialogPrimitive.Close
-      className="flex h-10 items-center justify-center rounded-md border bg-gray-100 border border-sky-950 px-3.5 text-base font-bold text-pink-600 select-none hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100"
+      className={cn(
+        "flex h-10 items-center justify-center rounded-md  bg-gray-100 border border-sky-950 px-3.5 font-bold text-gray-950 select-none hover:bg-gray-300  focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 active:bg-gray-100",
+        className,
+      )}
       {...props}
     />
   );
@@ -84,5 +77,4 @@ export {
   AlertDialogDescription,
   AlertDialogTitle,
   AlertDialogCancel,
-  AlertDialogRestart,
 };
