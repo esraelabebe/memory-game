@@ -1,7 +1,7 @@
-import { DataItem } from "../data/data";
+import { SelectItem } from "../data/data";
 
 interface ValueArray {
-  valueArray: DataItem[];
+  valueArray: SelectItem[];
 }
 
 function Option({ valueArray }: ValueArray) {

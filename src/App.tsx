@@ -66,7 +66,7 @@ function App() {
   function handleFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: parseInt(e.target.value,)
     }));
   }
 
