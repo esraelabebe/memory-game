@@ -1,4 +1,4 @@
-import { SelectItem } from "../data/data";
+import { SelectItem } from "./data/data";
 
 interface ValueArray {
   valueArray: SelectItem[];
