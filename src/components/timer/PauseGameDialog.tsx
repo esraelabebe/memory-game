@@ -5,7 +5,7 @@ import {
   AlertDialogDescription,
   AlertDialogTitle,
   AlertDialogCancel,
-} from "./alert-dialog";
+} from "../alert-dialog";
 
 interface PauseGameDialogProps {
   isPlay: boolean;

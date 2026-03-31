@@ -1,7 +1,7 @@
-import { data } from "../data/data";
+import { data } from "./data/data";
 import Option from "./Option";
-import { HandleChange } from "../App";
-import { FormData } from "./Form";
+import { HandleChange } from "../../../App";
+import { FormData } from "../Form";
 
 interface SelectProps{
   handleChange: HandleChange;

@@ -1,10 +1,10 @@
 import { useRef, useEffect, useState } from "react";
-import RegularButton from "./RegularButton";
+import RegularButton from "../../components/RegularButton";
 import Level from "./Level";
-import Timer from "./Timer";
-import { formatTime } from "./format-time";
-import { FormData } from "./Form";
-import { HandleSubmit } from "./RegularButton";
+import Timer from "../../components/timer/Timer";
+import { formatTime } from "../../components/format-time";
+import { FormData } from "../form/Form";
+import { HandleSubmit } from "../../components/RegularButton";
 
 interface GameOverProps {
   formData: FormData;
@@ -66,19 +66,19 @@ function GameOver({
 
   return (
     <div
-      className="flex flex-col items-center text-center gap-6 bg-zinc-950 text-teal-50 rounded-2xl py-8 px-12 border border-zin-800 m-7 shadow-[0_0_4px_1px_gray]"
+      className="flex flex-col items-center text-center gap-2 sm:gap-6 bg-zinc-950 text-teal-50 rounded-2xl py-8 px-12 border border-zin-800 m-3 sm:m-7 shadow-[0_0_4px_1px_gray]"
       ref={divRef}
       tabIndex={-1}
     >
       <p className="text-2xl">You've matched all the memory cards! 🎉</p>
       <p>Built by Esrael Abebe</p>
-      <div className="wrapper--score">
+      <div className="wrapper--score flex flex-col gap-3">
         {/** Show timer and best score after all cards are matched */}
-        <div className="flex flex-col items-center sm:flex-row gap-3 font-bold text-pink-600">
+        <div className="flex flex-col items-center sm:flex-row sm:gap-3 font-bold text-pink-600">
           <label htmlFor="time">Time:</label>
           <Timer id="time" time={time} setTime={setTime} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center gap-3 font-bold text-pink-600">
+        <div className="flex flex-col sm:flex-row items-center sm:gap-3 font-bold text-pink-600">
           <label
             id="best-score"
             htmlFor="bestScore"

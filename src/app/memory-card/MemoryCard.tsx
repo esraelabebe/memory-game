@@ -1,5 +1,5 @@
-import { SelectedCard } from "../App";
-import { EmojiData } from "./api";
+import { SelectedCard } from "../../App";
+import { EmojiData } from "../../components/api";
 import EmojiButton from "./EmojiButton";
 
 interface MemoryCardProps {
@@ -51,7 +51,7 @@ function MemoryCard({  data, handleClick, selectedCards, matchedCards }: MemoryC
   });
 
   return (
-    <ul className="pl-0 grid [grid-template-columns:repeat(auto-fit,minmax(100px,1fr))] gap-4 w-full m-7">
+    <ul className="pl-0 grid [grid-template-columns:repeat(auto-fit,minmax(100px,1fr))] gap-4 w-full m-3 sm:m-7">
       {cardEl}
     </ul>
   );

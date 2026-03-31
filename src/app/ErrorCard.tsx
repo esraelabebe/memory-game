@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import RegularButton from "./RegularButton";
+import RegularButton from "../components/RegularButton";
 
 interface ErrorCardProps {
   handleClick: () => void;

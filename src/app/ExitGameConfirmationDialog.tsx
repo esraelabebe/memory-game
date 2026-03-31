@@ -5,7 +5,7 @@ import {
   AlertDialogDescription,
   AlertDialogTitle,
   AlertDialogCancel,
-} from "./alert-dialog";
+} from "../components/alert-dialog";
 
 interface ExitGameConfirmationDialogProps {
   showResetConfirm: boolean;

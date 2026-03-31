@@ -1,5 +1,5 @@
 import { useEffect, Dispatch, SetStateAction, useState } from "react";
-import { formatTime } from "./format-time";
+import { formatTime } from "../format-time";
 import PauseGameDialog from "./PauseGameDialog";
 
 interface TimerProps {

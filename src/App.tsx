@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { EmojiData, getEmojisData } from "./components/api";
-import AssistiveTechInfo from "./components/AssistiveTechInfo";
-import Form, { FormData } from "./components/Form";
-import GameOver from "./components/GameOver";
-import MemoryCard from "./components/MemoryCard";
-import ErrorCard from "./components/ErrorCard";
-import Timer from "./components/Timer";
+import AssistiveTechInfo from "./app/AssistiveTechInfo";
+import Form, { FormData } from "./app/form/Form";
+import GameOver from "./app/game-over/GameOver";
+import MemoryCard from "./app/memory-card/MemoryCard";
+import ErrorCard from "./app/ErrorCard";
+import Timer from "./components/timer/Timer";
 import { HandleSubmit } from "./components/RegularButton";
-import ExitGameConfirmationDialog from "./components/ExitGameConfirmationDialog";
+import ExitGameConfirmationDialog from "./app/ExitGameConfirmationDialog";
 
 export interface SelectedCard {
   emojiElement: string;
@@ -183,7 +183,7 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col items-center gap-9 min-h-screen pt-9">
+    <main className="flex flex-col items-center gap-1 sm:gap-9 min-h-screen pt-9">
       <div className="flex gap-6 items-center">
           <ExitGameConfirmationDialog
             showResetConfirm={showResetConfirm}

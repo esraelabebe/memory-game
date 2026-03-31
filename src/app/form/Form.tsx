@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import RegularButton, { HandleSubmit } from "./RegularButton";
-import Select from "./Select";
-import { HandleChange } from "../App";
+import RegularButton, { HandleSubmit } from "../../components/RegularButton";
+import Select from "./select/Select";
+import { HandleChange } from "../../App";
 
 export interface FormData {
   group: string;
