@@ -1,4 +1,4 @@
-import { EmojiData } from "../components/api";
+import { EmojiData } from "../components/utils/api";
 
 // Define the shape of the props
 interface SelectedCard {
