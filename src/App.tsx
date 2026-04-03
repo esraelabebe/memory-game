@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EmojiData, getEmojisData } from "./components/utils/api";
+import { EmojiData, getEmojisData } from "./utils/api";
 import AssistiveTechInfo from "./app/AssistiveTechInfo";
 import Form, { FormData } from "./app/form/Form";
 import GameOver from "./app/game-over/GameOver";

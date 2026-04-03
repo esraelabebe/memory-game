@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import RegularButton from "../../components/RegularButton";
 import Level from "./Level";
 import Timer from "../../components/timer/Timer";
-import { formatTime } from "../../components/utils/format-time";
+import { formatTime } from "../../utils/format-time";
 import { FormData } from "../form/Form";
 import { HandleSubmit } from "../../components/RegularButton";
 

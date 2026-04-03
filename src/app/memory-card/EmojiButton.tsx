@@ -1,4 +1,4 @@
-import { EmojiData } from "../../components/utils/api";
+import { EmojiData } from "../../utils/api";
 import { SelectedCard } from "../../App";
 
 interface EmojiButtonProps {

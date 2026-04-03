@@ -1,5 +1,5 @@
 import { SelectedCard } from "../../App";
-import { EmojiData } from "../../components/utils/api";
+import { EmojiData } from "../../utils/api";
 import EmojiButton from "./EmojiButton";
 
 interface MemoryCardProps {
