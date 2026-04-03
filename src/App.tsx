@@ -63,10 +63,17 @@ function App() {
     }
   };
 
-  function handleFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
+  function handleGroupFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [e.target.name]: parseInt(e.target.value,)
+      [e.target.name]: e.target.value
+    }));
+  }
+
+  function handleNumberFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [e.target.name]: parseInt(e.target.value),
     }));
   }
 
@@ -185,14 +192,14 @@ function App() {
   return (
     <main className="flex flex-col items-center gap-1 sm:gap-9 min-h-screen pt-9">
       <div className="flex gap-6 items-center">
-          <ExitGameConfirmationDialog
-            showResetConfirm={showResetConfirm}
-            setShowResetConfirm={setShowResetConfirm}
-            resetGame={resetGame}
-            handleLogoClick={handleLogoClick}
-            isGameOn={isGameOn}
-            areAllCardsMatched={areAllCardsMatched}
-          />
+        <ExitGameConfirmationDialog
+          showResetConfirm={showResetConfirm}
+          setShowResetConfirm={setShowResetConfirm}
+          resetGame={resetGame}
+          handleLogoClick={handleLogoClick}
+          isGameOn={isGameOn}
+          areAllCardsMatched={areAllCardsMatched}
+        />
         <img
           src="/assets/Memory-Game-Logo.png"
           alt="logo"
@@ -206,7 +213,8 @@ function App() {
       {!isGameOn && !isError && (
         <Form
           handleSubmit={startGame}
-          handleChange={handleFormChange}
+          handleNumberChange={handleNumberFormChange}
+          handleGroupChange={handleGroupFormChange}
           isFirstRender={isFirstRender}
           loading={isLoading}
           formData={formData}
