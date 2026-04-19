@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import RegularButton, { HandleSubmit } from "./RegularButton";
-import Select from "./Select";
-import { HandleChange } from "../App";
+import RegularButton, { HandleSubmit } from "../../components/RegularButton";
+import Select from "./select/Select";
+import { HandleChange } from "../../App";
 
 export interface FormData {
   group: string;
@@ -9,7 +9,8 @@ export interface FormData {
 }
 interface FormProps {
   handleSubmit: HandleSubmit;
-  handleChange: HandleChange;
+  handleGroupChange: HandleChange;
+  handleNumberChange: HandleChange;
   isFirstRender: boolean;
   loading: boolean;
   formData: FormData;
@@ -17,7 +18,8 @@ interface FormProps {
 
 function Form({
   handleSubmit,
-  handleChange,
+  handleGroupChange,
+  handleNumberChange,
   isFirstRender,
   loading,
   formData,
@@ -45,7 +47,7 @@ function Form({
             memory cards.
           </p>
           <form className="flex flex-col bg-zinc-950 text-teal-50 rounded-lg gap-8 text-xl p-10 border border-zin-950 shadow-[0_0_4px_1px_gray]">
-            <Select handleChange={handleChange} formData={formData} />
+            <Select handleGroupChange={handleGroupChange} handleNumberChange={handleNumberChange} formData={formData} />
             <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
           </form>
         </>

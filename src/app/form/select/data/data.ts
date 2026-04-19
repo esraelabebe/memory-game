@@ -1,11 +1,11 @@
-export interface DataItem {
-  name?: string; // Optional because 'number' items don't have names
-  value: string;
+export interface SelectItem {
+  name?: string;
+  value: string | number;
 }
 
 interface Data {
-  group: DataItem[];
-  number: DataItem[];
+  group: SelectItem[];
+  number: SelectItem[];
 }
 
 const data: Data  = {
@@ -33,19 +33,19 @@ const data: Data  = {
   ],
   number: [
     {
-      value: "10",
+      value: 10,
     },
     {
-      value: "20",
+      value: 20,
     },
     {
-      value: "30",
+      value: 30,
     },
     {
-      value: "40",
+      value: 40,
     },
     {
-      value: "50",
+      value: 50,
     },
   ],
 };

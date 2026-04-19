@@ -1,5 +1,5 @@
-import { FormData } from "./Form";
-import RegularButton, { HandleSubmit } from "./RegularButton";
+import { FormData } from "../form/Form";
+import RegularButton, { HandleSubmit } from "../../components/RegularButton";
 
 interface LevelProps {
   formData: FormData;
