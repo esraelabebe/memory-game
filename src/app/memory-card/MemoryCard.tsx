@@ -51,7 +51,7 @@ function MemoryCard({  data, handleClick, selectedCards, matchedCards }: MemoryC
   });
 
   return (
-    <ul className="pl-0 grid [grid-template-columns:repeat(auto-fit,minmax(100px,1fr))] gap-4 w-full m-3 sm:m-7">
+    <ul className="pl-0 grid [grid-template-columns:repeat(auto-fit,minmax(100px,1fr))] gap-4 w-full m-3 sm:m-7 max-w-6xl">
       {cardEl}
     </ul>
   );

@@ -34,7 +34,7 @@ function ExitGameConfirmationDialog({
         setShowResetConfirm(open);
       }}
     >
-      <AlertDialogTrigger onClick={handleLogoClick}>⬅</AlertDialogTrigger>
+      <AlertDialogTrigger onClick={handleLogoClick} title="Restart">⬅</AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogTitle>Restart Game?</AlertDialogTitle>
         <AlertDialogDescription>
