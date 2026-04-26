@@ -1,7 +1,7 @@
 import { Tooltip as TooltipPrimitive } from "@base-ui/react/tooltip";
 import { cn } from "../utils/utils";
 
-function ToolTip({ ...props }: TooltipPrimitive.Root.Props) {
+function Tooltip({ ...props }: TooltipPrimitive.Root.Props) {
   return <TooltipPrimitive.Root {...props} />;
 }
 
@@ -79,7 +79,7 @@ function ArrowSvg(props: React.ComponentProps<"svg">) {
 }
 
 export {
-  ToolTip,
+  Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipArrow,

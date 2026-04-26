@@ -6,6 +6,7 @@ import {
   AlertDialogTitle,
   AlertDialogCancel,
 } from "../components/alert-dialog";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../components/Tooltip";
 
 interface ExitGameConfirmationDialogProps {
   showResetConfirm: boolean;
@@ -34,7 +35,14 @@ function ExitGameConfirmationDialog({
         setShowResetConfirm(open);
       }}
     >
-      <AlertDialogTrigger onClick={handleLogoClick} title="Restart">⬅</AlertDialogTrigger>
+      <Tooltip>
+        <TooltipTrigger
+          render={<AlertDialogTrigger onClick={handleLogoClick} />}
+        >
+          ⬅
+        </TooltipTrigger>
+        <TooltipContent>{"Restart"}</TooltipContent>
+      </Tooltip>
       <AlertDialogContent>
         <AlertDialogTitle>Restart Game?</AlertDialogTitle>
         <AlertDialogDescription>
