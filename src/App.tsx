@@ -190,7 +190,7 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col items-center gap-1 sm:gap-9 min-h-screen pt-9">
+    <main className="flex flex-col items-center gap-1 sm:gap-9 min-h-screen pt-9 px-3">
       <div className="flex gap-6 items-center">
         <ExitGameConfirmationDialog
           showResetConfirm={showResetConfirm}

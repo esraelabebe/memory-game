@@ -6,7 +6,11 @@ import {
   AlertDialogTitle,
   AlertDialogCancel,
 } from "../alert-dialog";
-
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "../Tooltip";
 interface PauseGameDialogProps {
   isPlay: boolean;
   setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,9 +34,14 @@ function PauseGameDialog({
         setIsPlay(open);
       }}
     >
-      <AlertDialogTrigger onClick={handlePlayPause}>
-        {isPlay ? "▶" : "⏸"}
-      </AlertDialogTrigger>
+      <Tooltip>
+        <TooltipTrigger
+          render={<AlertDialogTrigger onClick={handlePlayPause} />}
+        >
+          {isPlay ? "▶" : "⏸"}
+        </TooltipTrigger>
+        <TooltipContent>{isPlay ? "Play" : "Pause"}</TooltipContent>
+      </Tooltip>
       <AlertDialogContent>
         <AlertDialogTitle>Press Play to continue.</AlertDialogTitle>
         <AlertDialogDescription></AlertDialogDescription>
