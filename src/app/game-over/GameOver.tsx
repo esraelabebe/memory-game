@@ -74,11 +74,11 @@ function GameOver({
       <p>Built by Esrael Abebe</p>
       <div className="wrapper--score flex flex-col gap-3">
         {/** Show timer and best score after all cards are matched */}
-        <div className="flex flex-col items-center sm:flex-row sm:gap-3 font-bold text-pink-600">
+        <div className="flex flex-col items-center sm:flex-row sm:gap-3 font-bold text-sky-300">
           <label htmlFor="time">Time:</label>
           <Timer id="time" time={time} setTime={setTime} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center sm:gap-3 font-bold text-pink-600">
+        <div className="flex flex-col sm:flex-row items-center sm:gap-3 font-bold text-sky-300">
           <label
             id="best-score"
             htmlFor="bestScore"
