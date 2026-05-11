@@ -9,7 +9,7 @@ interface RegularButtonProps {
   children: React.ReactNode;
   handleClick?: HandleSubmit;
   handleNextLevel?: any;
-  className: string;
+  className?: string;
 }
 
 function RegularButton({
