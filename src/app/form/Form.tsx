@@ -34,7 +34,7 @@ function Form({
 
   return (
     <div
-      className="flex flex-col gap-4 text-start m-4"
+      className="flex flex-col gap-4 text-start"
       ref={divRef}
       tabIndex={-1}
     >
@@ -42,11 +42,11 @@ function Form({
         <p>Loading...</p>
       ) : (
         <>
-          <p className="p--regular">
+          <p className="text-teal-50">
             Customize the game by selecting an emoji group and a number of
             memory cards.
           </p>
-          <form className="flex flex-col bg-zinc-950 text-teal-50 rounded-lg gap-8 text-xl p-10 border border-zin-950 shadow-[0_0_4px_1px_gray]">
+          <form className="flex flex-col bg-zinc-950 text-teal-50 rounded-xl gap-8 text-xl p-10 border border-zin-950">
             <Select handleGroupChange={handleGroupChange} handleNumberChange={handleNumberChange} formData={formData} />
             <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
           </form>

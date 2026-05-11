@@ -15,7 +15,6 @@ function AlertDialogTrigger({ ...props }: AlertDialogPrimitive.Trigger.Props) {
 }
 
 function AlertDialogContent({
-  className,
   size = "default",
   ...props
 }: AlertDialogPrimitive.Popup.Props & {
@@ -34,7 +33,6 @@ function AlertDialogContent({
   );
 }
 function AlertDialogTitle({
-  className,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Title>) {
   return (
@@ -45,7 +43,6 @@ function AlertDialogTitle({
   );
 }
 function AlertDialogDescription({
-  className,
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Description>) {
   return (
