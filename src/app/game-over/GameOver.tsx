@@ -86,7 +86,7 @@ function GameOver({
           {bestScore !== null && <p id="bestScore">{formatTime(bestScore)}</p>}
         </div>
       </div>
-      <div className="flex sm:justify-center w-full gap-5 sm:gap-1 flex-col sm:flex-row">
+      <div className="flex sm:justify-center w-full gap-4 flex-col sm:flex-row">
         <Level
           formData={formData}
           setFormData={setFormData}
