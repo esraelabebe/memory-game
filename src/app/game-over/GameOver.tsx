@@ -66,19 +66,19 @@ function GameOver({
 
   return (
     <div
-      className="flex flex-col items-center text-center gap-2 sm:gap-6 bg-zinc-950 text-teal-50 rounded-2xl py-8 px-12 border border-zin-800 m-3 sm:m-7 shadow-[0_0_4px_1px_gray]"
+      className="flex flex-col items-center text-center gap-2 sm:gap-6 bg-zinc-950 text-teal-50 rounded-xl p-8 border border-zin-800 sm:m-7"
       ref={divRef}
       tabIndex={-1}
     >
       <p className="text-2xl">You've matched all the memory cards! 🎉</p>
       <p>Built by Esrael Abebe</p>
-      <div className="wrapper--score flex flex-col gap-3">
+      <div className="wrapper--score flex flex-col gap-2">
         {/** Show timer and best score after all cards are matched */}
-        <div className="flex flex-col items-center sm:flex-row sm:gap-3 font-bold text-pink-600">
+        <div className="flex flex-col items-center sm:flex-row sm:gap-3 font-bold text-teal-50">
           <label htmlFor="time">Time:</label>
           <Timer id="time" time={time} setTime={setTime} />
         </div>
-        <div className="flex flex-col sm:flex-row items-center sm:gap-3 font-bold text-pink-600">
+        <div className="flex flex-col sm:flex-row items-center sm:justify-end sm:gap-3 font-bold text-teal-50">
           <label
             id="best-score"
             htmlFor="bestScore"
@@ -86,7 +86,7 @@ function GameOver({
           {bestScore !== null && <p id="bestScore">{formatTime(bestScore)}</p>}
         </div>
       </div>
-      <div className="flex gap-5 flex-col sm:flex-row sm:gap-12">
+      <div className="flex sm:justify-center w-full gap-4 flex-col sm:flex-row">
         <Level
           formData={formData}
           setFormData={setFormData}
@@ -97,7 +97,9 @@ function GameOver({
          * Render an instance of the "RegularButton" component
          * This button should reset the game and return the user to the initial form displayed at the start.
          */}
-        <RegularButton handleClick={resetGame}>Play again</RegularButton>
+        <RegularButton className="bg-[rgba(232,7,165,0.13)] border-1 border-sky-100 hover:bg-[rgba(232,7,165,0.13)] hover:text-[rgba(239,232,239,0.37)]" handleClick={resetGame}>
+          Play again
+        </RegularButton>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function Select({ handleGroupChange, handleNumberChange, formData }: SelectProps
     <div key={key} className="flex flex-col gap-2">
       <label htmlFor={key}>Select an emoji {key}</label>
       <select
-        className="bg-slate-950 text-teal-50 text-base font-black p-4 border-2  border-sky-100 rounded-xl cursor-pointer  hover:bg-pink-950 focus:bg-pink-950"
+        className="bg-slate-950 text-teal-50 text-base font-black p-4 border-1  border-sky-100 rounded-xl cursor-pointer  hover:bg-pink-950 focus:bg-pink-950"
         name={key}
         value={key === "group" ? formData.group : formData.number}
         id={key}

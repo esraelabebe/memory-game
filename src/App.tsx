@@ -190,8 +190,8 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col items-center gap-1 sm:gap-9 min-h-screen pt-9">
-      <div className="flex gap-6 items-center">
+    <main className="flex flex-col items-center gap-9 min-h-screen px-3 pt-10">
+      <div className="flex items-center gap-3 sm:gap-6">
         <ExitGameConfirmationDialog
           showResetConfirm={showResetConfirm}
           setShowResetConfirm={setShowResetConfirm}
@@ -206,7 +206,7 @@ function App() {
           width="70px"
           height="70px"
         />
-        <h1 className="text-teal-50 text-2xl sm:text-4xl tracking-widest m-0">
+        <h1 className="text-teal-50 text-2xl font-medium sm:text-4xl tracking-widest m-0">
           Memory Game
         </h1>
       </div>
