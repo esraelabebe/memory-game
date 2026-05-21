@@ -26,7 +26,7 @@ function MemoryCard({  data, handleClick, selectedCards, matchedCards }: MemoryC
      * conditionally assign card elements a value depending on whether a card is selected, matched or neither.
      */
 
-  const assignCardElementStyleBaseOnCardEntryStatus = (matchedCardEntry?: SelectedCard, selectedCardEntry?: SelectedCard) => {
+  const assignCardElementStyleBasedOnCardEntryStatus = (matchedCardEntry?: SelectedCard, selectedCardEntry?: SelectedCard) => {
     if(matchedCardEntry){
       return "rotate-y-180";
     } else if(selectedCardEntry) {
@@ -35,7 +35,7 @@ function MemoryCard({  data, handleClick, selectedCards, matchedCards }: MemoryC
       return "";
     }
   }
-  const assignCardElementStyle = assignCardElementStyleBaseOnCardEntryStatus(matchedCardEntry, selectedCardEntry);
+  const assignCardElementStyle = assignCardElementStyleBasedOnCardEntryStatus(matchedCardEntry, selectedCardEntry);
 
     return (
       <li key={index} className={`list-none ${assignCardElementStyle}`}>
