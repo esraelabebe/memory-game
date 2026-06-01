@@ -1,3 +1,4 @@
+import { useGameStatusData } from "../../Context/AppStateContext";
 import {
   AlertDialog,
   AlertDialogContent,
@@ -15,14 +16,14 @@ interface PauseGameDialogProps {
   isPlay: boolean;
   setIsPlay: React.Dispatch<React.SetStateAction<boolean>>;
   handlePlayPause: () => void;
-  isGameOn?: boolean;
 }
 function PauseGameDialog({
   isPlay,
   setIsPlay,
   handlePlayPause,
-  isGameOn,
 }: PauseGameDialogProps) {
+  const { isGameOn } = useGameStatusData();
+
   if (!isGameOn) {
     return null;
   }

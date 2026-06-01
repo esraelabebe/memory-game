@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { EmojiData, getEmojisData } from "./utils/api";
 import AssistiveTechInfo from "./app/AssistiveTechInfo";
-import Form, { FormData } from "./app/form/Form";
+import Form from "./app/form/Form";
 import GameOver from "./app/game-over/GameOver";
 import MemoryCard from "./app/memory-card/MemoryCard";
 import ErrorCard from "./app/ErrorCard";
 import Timer from "./components/timer/Timer";
 import { HandleSubmit } from "./components/RegularButton";
 import ExitGameConfirmationDialog from "./app/ExitGameConfirmationDialog";
+import {
+  FormDataContext,
+  GameStatusContext,
+} from "./Context/AppStateContext";
+import { FormData } from "./app/form/select/Select";
 
 export interface SelectedCard {
   emojiElement: string;
@@ -66,7 +71,7 @@ function App() {
   function handleGroupFormChange(e: React.ChangeEvent<HTMLSelectElement>) {
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   }
 
@@ -173,6 +178,7 @@ function App() {
     setMatchedCards([]);
     setAreAllCardsMatched(false);
     setTime(0);
+    console.log("something");
   }
 
   function resetError() {
@@ -190,71 +196,78 @@ function App() {
   };
 
   return (
-    <main className="flex flex-col items-center gap-9 min-h-screen px-3 pt-10">
-      <div className="flex items-center gap-3 sm:gap-6">
-        <ExitGameConfirmationDialog
-          showResetConfirm={showResetConfirm}
-          setShowResetConfirm={setShowResetConfirm}
-          resetGame={resetGame}
-          handleLogoClick={handleLogoClick}
-          isGameOn={isGameOn}
-          areAllCardsMatched={areAllCardsMatched}
-        />
-        <img
-          src="/assets/Memory-Game-Logo.png"
-          alt="logo"
-          width="70px"
-          height="70px"
-        />
-        <h1 className="text-teal-50 text-2xl font-medium sm:text-4xl tracking-widest m-0">
-          Memory Game
-        </h1>
-      </div>
-      {!isGameOn && !isError && (
-        <Form
-          handleSubmit={startGame}
-          handleNumberChange={handleNumberFormChange}
-          handleGroupChange={handleGroupFormChange}
-          isFirstRender={isFirstRender}
-          loading={isLoading}
-          formData={formData}
-        />
-      )}
-      {isGameOn && !areAllCardsMatched && (
-        <Timer
-          isGameOn={isGameOn}
-          areAllCardsMatched={areAllCardsMatched}
-          time={time}
-          setTime={setTime}
-          showResetConfirm={showResetConfirm}
-        />
-      )}
-      {isGameOn && !areAllCardsMatched && (
-        <AssistiveTechInfo
-          emojisData={emojisData}
-          matchedCards={matchedCards}
-        />
-      )}
-      {areAllCardsMatched && (
-        <GameOver
-          formData={formData}
-          setFormData={setFormData}
-          startGame={startGame}
-          resetGame={resetGame}
-          time={time}
-          setTime={setTime}
-        />
-      )}
-      {isGameOn && (
-        <MemoryCard
-          data={emojisData}
-          handleClick={turnCard}
-          selectedCards={selectedCards}
-          matchedCards={matchedCards}
-        />
-      )}
-      {isError && <ErrorCard handleClick={resetError} />}
-    </main>
+    <FormDataContext.Provider
+      value={{
+        formData,
+        setFormData,
+      }}
+    >
+      <GameStatusContext.Provider
+        value={{
+          isGameOn,
+          setIsGameOn,
+          time,
+          setTime,
+        }}
+      >
+        <main className="flex flex-col items-center gap-9 min-h-screen px-3 pt-10">
+          <div className="flex items-center gap-3 sm:gap-6">
+            <ExitGameConfirmationDialog
+              showResetConfirm={showResetConfirm}
+              setShowResetConfirm={setShowResetConfirm}
+              resetGame={resetGame}
+              handleLogoClick={handleLogoClick}
+              areAllCardsMatched={areAllCardsMatched}
+            />
+            <img
+              src="/assets/Memory-Game-Logo.png"
+              alt="logo"
+              width="70px"
+              height="70px"
+            />
+            <h1 className="text-teal-50 text-2xl font-medium sm:text-4xl tracking-widest m-0">
+              Memory Game
+            </h1>
+          </div>
+          {!isGameOn && !isError && (
+            <Form
+              handleSubmit={startGame}
+              handleNumberChange={handleNumberFormChange}
+              handleGroupChange={handleGroupFormChange}
+              isFirstRender={isFirstRender}
+              loading={isLoading}
+            />
+          )}
+          {isGameOn && !areAllCardsMatched && (
+            <Timer
+              areAllCardsMatched={areAllCardsMatched}
+              showResetConfirm={showResetConfirm}
+            />
+          )}
+          {isGameOn && !areAllCardsMatched && (
+            <AssistiveTechInfo
+              emojisData={emojisData}
+              matchedCards={matchedCards}
+            />
+          )}
+          {areAllCardsMatched && (
+            <GameOver
+              startGame={startGame}
+              resetGame={resetGame}
+            />
+          )}
+          {isGameOn && (
+            <MemoryCard
+              data={emojisData}
+              handleClick={turnCard}
+              selectedCards={selectedCards}
+              matchedCards={matchedCards}
+            />
+          )}
+          {isError && <ErrorCard handleClick={resetError} />}
+        </main>
+      </GameStatusContext.Provider>
+    </FormDataContext.Provider>
   );
 }
 

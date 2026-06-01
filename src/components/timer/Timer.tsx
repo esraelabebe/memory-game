@@ -1,25 +1,22 @@
-import { useEffect, Dispatch, SetStateAction, useState } from "react";
+import { useEffect, useState } from "react";
 import { formatTime } from "../../utils/format-time";
 import PauseGameDialog from "./PauseGameDialog";
+import { useGameStatusData } from "../../Context/AppStateContext";
 
 interface TimerProps {
-  isGameOn?: boolean;
   areAllCardsMatched?: boolean;
-  time: number;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
   id?: string;
   showResetConfirm?: boolean;
 }
 
 function Timer({
-  isGameOn,
   areAllCardsMatched,
-  time,
-  setTime,
   id,
   showResetConfirm,
 }: TimerProps) {
   const [isPlay, setIsPlay] = useState(false);
+  const { time, setTime, isGameOn } = useGameStatusData();
+  console.log(isGameOn);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
@@ -42,7 +39,6 @@ function Timer({
         isPlay={isPlay}
         setIsPlay={setIsPlay}
         handlePlayPause={handlePlayPause}
-        isGameOn={isGameOn}
       />
     </div>
   );
