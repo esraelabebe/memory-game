@@ -16,7 +16,6 @@ function Timer({
 }: TimerProps) {
   const [isPlay, setIsPlay] = useState(false);
   const { time, setTime, isGameOn } = useGameStatusData();
-  console.log(isGameOn);
 
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;

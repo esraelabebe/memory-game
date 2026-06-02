@@ -178,7 +178,6 @@ function App() {
     setMatchedCards([]);
     setAreAllCardsMatched(false);
     setTime(0);
-    console.log("something");
   }
 
   function resetError() {
