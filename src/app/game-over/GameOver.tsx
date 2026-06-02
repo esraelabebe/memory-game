@@ -3,27 +3,23 @@ import RegularButton from "../../components/RegularButton";
 import Level from "./Level";
 import Timer from "../../components/timer/Timer";
 import { formatTime } from "../../utils/format-time";
-import { FormData } from "../form/Form";
 import { HandleSubmit } from "../../components/RegularButton";
+import { FormData } from "../form/select/Select";
+import { useFormData, useGameStatusData } from "../../Context/AppStateContext";
 
 interface GameOverProps {
-  formData: FormData;
-  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
   startGame: HandleSubmit;
   resetGame: () => void;
-  time: number;
-  setTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function GameOver({
-  formData,
-  setFormData,
   startGame,
   resetGame,
-  time,
-  setTime,
 }: GameOverProps) {
   const [bestScore, setBestScore] = useState<number | null>(null);
+  const {formData} = useFormData();
+  const { time } = useGameStatusData();
+
 
   // Helper: generate dynamic key for localStorage
   const getStorageKey = (formData: FormData): string =>
@@ -76,7 +72,7 @@ function GameOver({
         {/** Show timer and best score after all cards are matched */}
         <div className="flex flex-col items-center sm:flex-row sm:gap-3 font-bold text-teal-50">
           <label htmlFor="time">Time:</label>
-          <Timer id="time" time={time} setTime={setTime} />
+          <Timer id="time" />
         </div>
         <div className="flex flex-col sm:flex-row items-center sm:justify-end sm:gap-3 font-bold text-teal-50">
           <label
@@ -88,8 +84,6 @@ function GameOver({
       </div>
       <div className="flex sm:justify-center w-full gap-4 flex-col sm:flex-row">
         <Level
-          formData={formData}
-          setFormData={setFormData}
           startGame={startGame}
           resetGame={resetGame}
         />

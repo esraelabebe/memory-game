@@ -7,13 +7,13 @@ import {
   AlertDialogCancel,
 } from "../components/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../components/Tooltip";
+import { useGameStatusData } from "../Context/AppStateContext";
 
 interface ExitGameConfirmationDialogProps {
   showResetConfirm: boolean;
   setShowResetConfirm: React.Dispatch<React.SetStateAction<boolean>>;
   resetGame: () => void;
   handleLogoClick: () => void;
-  isGameOn: boolean;
   areAllCardsMatched: boolean;
 }
 
@@ -22,9 +22,10 @@ function ExitGameConfirmationDialog({
   setShowResetConfirm,
   resetGame,
   handleLogoClick,
-  isGameOn,
   areAllCardsMatched,
 }: ExitGameConfirmationDialogProps) {
+  const { isGameOn } = useGameStatusData();
+
   if (!isGameOn || areAllCardsMatched) {
     return null;
   }

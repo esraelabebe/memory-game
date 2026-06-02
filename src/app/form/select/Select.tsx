@@ -1,15 +1,21 @@
 import { data } from "./data/data";
 import Option from "./Option";
 import { HandleChange } from "../../../App";
-import { FormData } from "../Form";
+import { useFormData } from "../../../Context/AppStateContext";
+
+export interface FormData {
+  group: string;
+  number: 10 | 20 | 30 | 40 | 50;
+}
 
 interface SelectProps{
   handleGroupChange: HandleChange;
   handleNumberChange: HandleChange;
-  formData: FormData;
 }
 
-function Select({ handleGroupChange, handleNumberChange, formData }: SelectProps) {
+function Select({ handleGroupChange, handleNumberChange,}: SelectProps) {
+  const {formData} = useFormData();
+
   const selectEl = Object.entries(data).map(([key, value]) => (
     <div key={key} className="flex flex-col gap-2">
       <label htmlFor={key}>Select an emoji {key}</label>

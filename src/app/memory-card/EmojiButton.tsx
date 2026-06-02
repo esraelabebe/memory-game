@@ -22,7 +22,7 @@ function EmojiButton({
   /**
    * conditionally add button style depending on whether a card is selected, matched or neither.
    */
-  const getStyleAndAriaLabelBaseOnCardEntryStatus = (
+  const getStyleAndAriaLabelBasedOnCardEntryStatus = (
     matchedCardEntry?: SelectedCard,
     selectedCardEntry?: SelectedCard,
   ) => {
@@ -47,7 +47,7 @@ function EmojiButton({
     }
   };
 
-  const mappedStyleAndAriaLabel = getStyleAndAriaLabelBaseOnCardEntryStatus(
+  const mappedStyleAndAriaLabel = getStyleAndAriaLabelBasedOnCardEntryStatus(
     matchedCardEntry,
     selectedCardEntry,
   );

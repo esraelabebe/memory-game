@@ -13,10 +13,6 @@ function TooltipTrigger({
   return (
     <TooltipPrimitive.Trigger
       render={render}
-      // className={cn(
-      //   // "flex size-8 items-center justify-center border-0 rounded-sm bg-transparent text-gray-900 select-none data-popup-open:bg-gray-100 focus-visible:bg-none focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-blue-800 hover:bg-gray-100 active:bg-gray-200 focus-visible:not-[&:hover]:bg-transparent",
-      //   className,
-      // )}
       {...props}
     />
   );
