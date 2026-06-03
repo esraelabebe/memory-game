@@ -207,6 +207,7 @@ function App() {
           setIsGameOn,
           time,
           setTime,
+          resetGame,
         }}
       >
         <main className="flex flex-col items-center gap-9 min-h-screen px-3 pt-10">

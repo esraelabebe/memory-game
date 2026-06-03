@@ -20,11 +20,10 @@ interface ExitGameConfirmationDialogProps {
 function ExitGameConfirmationDialog({
   showResetConfirm,
   setShowResetConfirm,
-  resetGame,
   handleLogoClick,
   areAllCardsMatched,
 }: ExitGameConfirmationDialogProps) {
-  const { isGameOn } = useGameStatusData();
+  const { isGameOn, resetGame } = useGameStatusData();
 
   if (!isGameOn || areAllCardsMatched) {
     return null;
