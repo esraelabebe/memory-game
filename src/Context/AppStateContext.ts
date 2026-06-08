@@ -21,6 +21,7 @@ interface GameStatusContextType {
   setIsGameOn: React.Dispatch<React.SetStateAction<boolean>>;
   time: number;
   setTime: React.Dispatch<React.SetStateAction<number>>;
+  resetGame: () => void;
 }
 
 const GameStatusContext = createContext<GameStatusContextType | null>(null);
