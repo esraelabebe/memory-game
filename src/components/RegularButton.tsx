@@ -7,16 +7,14 @@ export type HandleSubmit = (
 
 interface RegularButtonProps {
   children: React.ReactNode;
-  handleClick?: HandleSubmit;
-  handleNextLevel?: any;
   className?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 function RegularButton({
   children,
-  handleClick,
-  handleNextLevel,
   className,
+  onClick,
 }: RegularButtonProps) {
   return (
     <button
@@ -24,13 +22,7 @@ function RegularButton({
         "bg-[rgb(207,2,104)] p-4 rounded-xl cursor-pointer text-white text-2xl w-max m-0 mx-auto py-5 px-17 sm:py-2 sm:px-8 hover:bg-pink-900 focus:bg-red-950",
         className,
       )}
-      onClick={(e) => {
-        if (handleClick) {
-          handleClick(e);
-        } else {
-          handleNextLevel(e);
-        }
-      }}
+      onClick={onClick}
     >
       {children}
     </button>

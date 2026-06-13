@@ -1,12 +1,12 @@
-import RegularButton, { HandleSubmit } from "../../components/RegularButton";
-import { useFormData } from "../../Context/AppStateContext";
+import RegularButton from "../../components/RegularButton";
+import { useFormData, useGameStatusData } from "../../Context/AppStateContext";
 
 interface LevelProps {
-  startGame: HandleSubmit;
   resetGame: () => void;
 }
-function Level({ startGame, resetGame }: LevelProps) {
+function Level() {
   const { formData, setFormData } = useFormData();
+  const { startGame, resetGame } = useGameStatusData();
 
   const handleNextLevel = (e: React.MouseEvent<HTMLButtonElement>) => {
     // When next level is selected add 10 and set formData state.
@@ -19,8 +19,6 @@ function Level({ startGame, resetGame }: LevelProps) {
     startGame(e, newFormDataNumber);
   };
 
-  return (
-    <RegularButton handleNextLevel={handleNextLevel}>Next level</RegularButton>
-  );
+  return <RegularButton onClick={handleNextLevel}>Next level</RegularButton>;
 }
 export default Level;

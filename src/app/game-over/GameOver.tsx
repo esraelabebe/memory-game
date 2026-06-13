@@ -3,23 +3,13 @@ import RegularButton from "../../components/RegularButton";
 import Level from "./Level";
 import Timer from "../../components/timer/Timer";
 import { formatTime } from "../../utils/format-time";
-import { HandleSubmit } from "../../components/RegularButton";
 import { FormData } from "../form/select/Select";
 import { useFormData, useGameStatusData } from "../../Context/AppStateContext";
 
-interface GameOverProps {
-  startGame: HandleSubmit;
-  resetGame: () => void;
-}
-
-function GameOver({
-  startGame,
-  resetGame,
-}: GameOverProps) {
+function GameOver() {
   const [bestScore, setBestScore] = useState<number | null>(null);
-  const {formData} = useFormData();
-  const { time } = useGameStatusData();
-
+  const { formData } = useFormData();
+  const { time, resetGame } = useGameStatusData();
 
   // Helper: generate dynamic key for localStorage
   const getStorageKey = (formData: FormData): string =>
@@ -83,15 +73,15 @@ function GameOver({
         </div>
       </div>
       <div className="flex sm:justify-center w-full gap-4 flex-col sm:flex-row">
-        <Level
-          startGame={startGame}
-          resetGame={resetGame}
-        />
+        <Level />
         {/**
          * Render an instance of the "RegularButton" component
          * This button should reset the game and return the user to the initial form displayed at the start.
          */}
-        <RegularButton className="bg-[rgba(232,7,165,0.13)] border-1 border-sky-100 hover:bg-[rgba(232,7,165,0.13)] hover:text-[rgba(239,232,239,0.37)]" handleClick={resetGame}>
+        <RegularButton
+          className="bg-[rgba(232,7,165,0.13)] border-1 border-sky-100 hover:bg-[rgba(232,7,165,0.13)] hover:text-[rgba(239,232,239,0.37)]"
+          onClick={resetGame}
+        >
           Play again
         </RegularButton>
       </div>

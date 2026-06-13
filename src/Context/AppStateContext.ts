@@ -1,9 +1,13 @@
 import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import { FormData } from "../app/form/select/Select";
+import { HandleSubmit } from "../components/RegularButton";
+import { HandleChange } from "../App";
 
 interface FormDataContextType {
   formData: FormData;
   setFormData: Dispatch<SetStateAction<FormData>>;
+  handleGroupFormChange: HandleChange;
+  handleNumberFormChange: HandleChange;
 }
 
 const FormDataContext = createContext<FormDataContextType | null>(null);
@@ -22,6 +26,8 @@ interface GameStatusContextType {
   time: number;
   setTime: React.Dispatch<React.SetStateAction<number>>;
   resetGame: () => void;
+  startGame: HandleSubmit;
+  turnCard: (emojiElement: string, index: number) => void;
 }
 
 const GameStatusContext = createContext<GameStatusContextType | null>(null);
