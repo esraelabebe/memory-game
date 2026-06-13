@@ -263,7 +263,7 @@ function App() {
               matchedCards={matchedCards}
             />
           )}
-          {isError && <ErrorCard handleClick={resetError} />}
+          {isError && <ErrorCard onClick={resetError} />}
         </main>
       </GameStatusContext.Provider>
     </FormDataContext.Provider>
