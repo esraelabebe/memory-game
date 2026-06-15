@@ -1,5 +1,6 @@
 import { EmojiData } from "../../utils/api";
 import { SelectedCard } from "../../App";
+import { useGameStatusData } from "../../Context/AppStateContext";
 
 interface EmojiButtonProps {
   emojiElement: EmojiData;
@@ -16,6 +17,8 @@ function EmojiButton({
   selectedCardEntry,
   matchedCardEntry,
 }: EmojiButtonProps) {
+  const { turnCard } = useGameStatusData();
+
   const btnContent =
     selectedCardEntry || matchedCardEntry ? emojiElement.emoji : "?";
 

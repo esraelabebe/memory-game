@@ -1,11 +1,12 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, } from "react";
 import RegularButton from "../components/RegularButton";
 
 interface ErrorCardProps {
-  handleClick: () => void;
+  onClick: () => void;
 }
-function ErrorCard({ handleClick }: ErrorCardProps) {
+function ErrorCard({ onClick }: ErrorCardProps) {
   const divRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
     divRef.current?.focus();
@@ -22,7 +23,7 @@ function ErrorCard({ handleClick }: ErrorCardProps) {
         Please come back later or click the button below to try restarting the
         game.
       </p>
-      <RegularButton handleClick={handleClick}>Restart game</RegularButton>
+      <RegularButton onClick={onClick}>Restart game</RegularButton>
     </div>
   );
 }

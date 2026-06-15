@@ -1,6 +1,5 @@
 import { data } from "./data/data";
 import Option from "./Option";
-import { HandleChange } from "../../../App";
 import { useFormData } from "../../../Context/AppStateContext";
 
 export interface FormData {
@@ -8,13 +7,9 @@ export interface FormData {
   number: 10 | 20 | 30 | 40 | 50;
 }
 
-interface SelectProps{
-  handleGroupChange: HandleChange;
-  handleNumberChange: HandleChange;
-}
-
-function Select({ handleGroupChange, handleNumberChange,}: SelectProps) {
-  const {formData} = useFormData();
+function Select() {
+  const { formData, handleGroupFormChange, handleNumberFormChange } =
+    useFormData();
 
   const selectEl = Object.entries(data).map(([key, value]) => (
     <div key={key} className="flex flex-col gap-2">
@@ -24,7 +19,9 @@ function Select({ handleGroupChange, handleNumberChange,}: SelectProps) {
         name={key}
         value={key === "group" ? formData.group : formData.number}
         id={key}
-        onChange={key === "group" ? handleGroupChange : handleNumberChange}
+        onChange={
+          key === "group" ? handleGroupFormChange : handleNumberFormChange
+        }
       >
         <Option valueArray={value} />
       </select>

@@ -83,6 +83,7 @@ function App() {
   }
 
   const startGame: HandleSubmit = async (e, newFormDataNumber) => {
+    console.log("start game called");
     e.preventDefault();
     try {
       setIsLoading(true);
@@ -199,6 +200,8 @@ function App() {
       value={{
         formData,
         setFormData,
+        handleGroupFormChange,
+        handleNumberFormChange,
       }}
     >
       <GameStatusContext.Provider
@@ -208,6 +211,8 @@ function App() {
           time,
           setTime,
           resetGame,
+          startGame,
+          turnCard,
         }}
       >
         <main className="flex flex-col items-center gap-9 min-h-screen px-3 pt-10">
@@ -231,9 +236,6 @@ function App() {
           </div>
           {!isGameOn && !isError && (
             <Form
-              handleSubmit={startGame}
-              handleNumberChange={handleNumberFormChange}
-              handleGroupChange={handleGroupFormChange}
               isFirstRender={isFirstRender}
               loading={isLoading}
             />
@@ -251,10 +253,7 @@ function App() {
             />
           )}
           {areAllCardsMatched && (
-            <GameOver
-              startGame={startGame}
-              resetGame={resetGame}
-            />
+            <GameOver />
           )}
           {isGameOn && (
             <MemoryCard
@@ -264,7 +263,7 @@ function App() {
               matchedCards={matchedCards}
             />
           )}
-          {isError && <ErrorCard handleClick={resetError} />}
+          {isError && <ErrorCard onClick={resetError} />}
         </main>
       </GameStatusContext.Provider>
     </FormDataContext.Provider>

@@ -1,24 +1,16 @@
 import { useRef, useEffect } from "react";
-import RegularButton, { HandleSubmit } from "../../components/RegularButton";
+import RegularButton from "../../components/RegularButton";
 import Select from "./select/Select";
-import { HandleChange } from "../../App";
+import { useGameStatusData } from "../../Context/AppStateContext";
 
 interface FormProps {
-  handleSubmit: HandleSubmit;
-  handleGroupChange: HandleChange;
-  handleNumberChange: HandleChange;
   isFirstRender: boolean;
   loading: boolean;
 }
 
-function Form({
-  handleSubmit,
-  handleGroupChange,
-  handleNumberChange,
-  isFirstRender,
-  loading,
-}: FormProps) {
+function Form({ isFirstRender, loading }: FormProps) {
   const divRef = useRef<HTMLDivElement>(null);
+  const { startGame } = useGameStatusData();
 
   useEffect(() => {
     if (!isFirstRender) {
@@ -37,11 +29,8 @@ function Form({
             memory cards.
           </p>
           <form className="flex flex-col bg-zinc-950 text-teal-50 rounded-xl gap-8 text-xl p-10 border border-zin-950">
-            <Select
-              handleGroupChange={handleGroupChange}
-              handleNumberChange={handleNumberChange}
-            />
-            <RegularButton handleClick={handleSubmit}>Start Game</RegularButton>
+            <Select />
+            <RegularButton onClick={startGame}>Start Game</RegularButton>
           </form>
         </>
       )}
